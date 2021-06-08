@@ -1,0 +1,693 @@
+﻿@model ExaminationEntity.ExaminationModels.UserProfile
+
+@{
+    ViewBag.Title = "Register";
+}
+
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Error</div>
+            <div class="panel-body">
+
+                Some required fields not fullfiled.. please check
+            </div>
+        </div>
+        error occur
+    </div>
+}
+
+
+
+@using (Html.BeginForm("EmploymentDataSheet", "Examiner", FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#personalDetails">Personal Detail</a></li>
+                <li><a data-toggle="tab" href="#educAttainment">Educational Attainment</a></li>
+                <li><a data-toggle="tab" href="#professionalLicense">Professional Licenses</a></li>
+                <li><a data-toggle="tab" href="#employmentHistory">Employment History</a></li>
+                <li><a data-toggle="tab" href="#referenceDetails">Reference Details</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="tab-content">
+                @*---------------------------------------------------------------------------*@
+                <div id="personalDetails" class="tab-pane fade in active">
+                    <div class="thumbnail">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @*<input class="mdl-textfield__input" type="text" id="sample3">
+                                        <label class="mdl-textfield__label" for="sample3">Text...</label>*@
+                                    @Html.TextBoxFor(p => p.Firstname, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Firstname", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Firstname, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @Html.TextBoxFor(p => p.Middlename, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Middlename", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Middlename, null, new { @class = "formErrorCode " })
+
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @Html.TextBoxFor(p => p.Lastname, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Lastname", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Lastname, null, new { @class = "formErrorCode " })
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @Html.TextBoxFor(p => p.Nickname, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Nickname", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Nickname, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.PresentAddress, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Present Address", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.PresentAddress, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.PermanentAddress, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Permanent Address", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.PermanentAddress, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">
+
+                                    @Html.TextBoxFor(p => p.BirthDate, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                    @Html.Label("Birthday", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.BirthDate, null, new { @class = "formErrorCode " })
+                                </div>
+                                @*@Html.TextBoxFor(p => p.BirthDate, new { @class = "datePickerMdl form-control floating-label", placeholder = "Birthday" })*@
+
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.BirthPlace, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("BirthPlace", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.BirthPlace, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Citizenship, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Citizenship", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Citizenship, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Age, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Age", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Age, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Weight, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Weight", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Weight, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Height, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Height", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Height, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                                    @Html.TextBoxFor(p => p.Gender, new { @class = "mdl-textfield__input", id = "selectedGender", @readonly = "" })
+                                    <label for="selectedGender" class="mdl-textfield__label">Gender</label>
+                                    @Html.ValidationMessageFor(p => p.Gender, null, new { @class = "formErrorCode " })
+
+
+                                    <ul for="selectedGender" class="genderSelect mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                        <li class="mdl-menu__item selectMenu">Male</li>
+                                        <li class="mdl-menu__item selectMenu">Female</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Religion, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Religion", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Religion, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                                    @Html.TextBoxFor(p => p.CivilStatus, new { @class = "mdl-textfield__input", id = "civilStatus", @readonly = "" })
+                                    <label for="civilStatus" class="mdl-textfield__label">Civil Status</label>
+                                    @Html.ValidationMessageFor(p => p.CivilStatus, null, new { @class = "formErrorCode " })
+
+
+                                    <ul for="civilStatus" class="civilStatusSelect mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                        <li class="mdl-menu__item selectMenu">Single</li>
+                                        <li class="mdl-menu__item selectMenu">Married</li>
+                                        <li class="mdl-menu__item selectMenu">Widow</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" id="notSingleRequirments" style="display:none;">
+                            <div class="col-xs-12 col-md-6 col-sm-12 col-lg-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"></div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                                    @Html.TextBoxFor(p => p.SpouseName, new { @class = "mdl-textfield__input" })
+                                                    @Html.Label("Name of Spouse", new { @class = "mdl-textfield__label" })
+                                                    @Html.ValidationMessageFor(p => p.SpouseName, null, new { @class = "formErrorCode " })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                                    @Html.TextBoxFor(p => p.SpouseOccupation, new { @class = "mdl-textfield__input" })
+                                                    @Html.Label("Occupation of Spouse", new { @class = "mdl-textfield__label" })
+                                                    @Html.ValidationMessageFor(p => p.SpouseOccupation, null, new { @class = "formErrorCode " })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                                    @Html.TextBoxFor(p => p.DependentNo, new { @class = "mdl-textfield__input" })
+                                                    @Html.Label("No. of Dependent", new { @class = "mdl-textfield__label" })
+                                                    @Html.ValidationMessageFor(p => p.DependentNo, null, new { @class = "formErrorCode " })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.Tin, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("TIN", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Tin, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.Pagibig, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("PAGIBIG", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Pagibig, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.Philhealth, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("PHILHEALTH", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Philhealth, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                    @Html.TextBoxFor(p => p.SSS, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("SSS", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.SSS, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="IsLicensedDriver">
+                                    @Html.CheckBoxFor(p => p.IsLicensedDriver, new { id = "idLicenseDriver", @class = "childValue", style = "display:none;" })
+                                    <input type="checkbox" id="IsLicensedDriver" class="chkIsLicenseDriver mdl-checkbox__input">
+                                    <span class="mdl-checkbox__label">Do you have Driver's License</span>
+                                </label>
+                                <div class="chkChildView" style="display:none;">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">
+                                        @Html.TextBoxFor(p => p.DriverLicenseValidity, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                        @Html.Label("Driver License Validity", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DriverLicenseValidity, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hasPassport">
+                                    @Html.CheckBoxFor(p => p.IsHasPassport, new { id = "isHasPassport", @class = "childValue", style = "display:none;" })
+                                    <input type="checkbox" id="hasPassport" class="chkHasPassport mdl-checkbox__input">
+                                    <span class="mdl-checkbox__label">Do you have Passport</span>
+                                </label>
+
+                                <div class="row chkChildView" style="display:none;">
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+
+                                            @Html.TextBoxFor(p => p.PassportNo, new { @class = "mdl-textfield__input" })
+                                            @Html.Label("Passport No", new { @class = "mdl-textfield__label" })
+                                            @Html.ValidationMessageFor(p => p.PassportNo, null, new { @class = "formErrorCode " })
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(p => p.PassportValitdity, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                            @Html.Label("Passport Validity", new { @class = "mdl-textfield__label" })
+                                            @Html.ValidationMessageFor(p => p.PassportValitdity, null, new { @class = "formErrorCode " })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.EmailAddress, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Email Address", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.EmailAddress, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.HomeContact, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Home Contact Number", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.HomeContact, null, new { @class = "formErrorCode " })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-6 col-lg-6 col-lg-offset-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.MobileContact, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Mobile Number", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.MobileContact, null, new { @class = "formErrorCode " })
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                @*---------------------------------------------------------------------------*@
+                <div id="educAttainment" class="tab-pane fade">
+
+                    <hr />
+                    <input type="button" id="addEducAttainment" class="btn btn-success" value="Add Level" />
+                    <hr />
+
+
+
+                    <div id="educAttainmentList">
+                        @if (Model.EducationHistories != null)
+                        {
+                            foreach (var item in Model.EducationHistories.Where(c => c.IsDeleted != true))
+                            {
+                                Html.RenderPartial("EducationAttained", item);
+                            }
+                        }
+
+
+                    </div>
+
+                </div>
+                @*---------------------------------------------------------------------------*@
+                <div id="professionalLicense" class="tab-pane fade">
+
+                    <hr />
+                    <input type="button" id="addProLicenses" class="btn btn-success" value="Add License" />
+                    <hr />
+
+
+
+                    <div id="prolicensesList">
+
+                        @if (Model.LicenseExaminations != null)
+                        {
+                            foreach (var item in Model.LicenseExaminations.Where(c => c.IsDeleted != true))
+                            {
+                                Html.RenderPartial("ProfessionalLicenses", item);
+                            }
+                        }
+
+                    </div>
+
+                </div>
+                @*---------------------------------------------------------------------------*@
+                <div id="employmentHistory" class="tab-pane fade">
+                    <hr />
+                    <input type="button" id="addEmpHistory" class="btn btn-success" value="Add History" />
+                    <hr />
+
+                    <div id="employmentHistoryList">
+
+                        @if (Model.EmploymentHistories != null)
+                        {
+                            foreach (var item in Model.EmploymentHistories.Where(c => c.IsDeleted != true))
+                            {
+                                Html.RenderPartial("EmploymentHistory", item);
+                            }
+                        }
+                    </div>
+                </div>
+                @*---------------------------------------------------------------------------*@
+                <div id="referenceDetails" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PositionAppliedFor, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Position Applied for", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PositionAppliedFor, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.DesiredEmploymentDetails.OpeningSource, new { @class = "mdl-textfield__input" })
+                                @Html.Label("How did you hear about this opening?", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.OpeningSource, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.DesiredEmploymentDetails.DesiredSalary, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Desired Salary", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.DesiredSalary, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="appliedBefore">
+                                @Html.CheckBoxFor(p => p.DesiredEmploymentDetails.IsPrevApplicant, new { id = "chkAppliedBefore", @class = "childValue", style = "display:none;" })
+                                <input type="checkbox" id="appliedBefore" class="chkAppliedBefore mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Have you ever been applied here before ?</span>
+                            </label>
+
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PrevApplication, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                        @Html.Label("Date Applied", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PrevApplication, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PrevPositionApplied, new { @class = "mdl-textfield__input" })
+                                        @Html.Label("For what Position", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PrevPositionApplied, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <label class=" chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hiredBefore">
+                                @Html.CheckBoxFor(p => p.DesiredEmploymentDetails.IsPrevHired, new { id = "chkHiredBefore", @class = "childValue", style = "display:none;" })
+                                <input type="checkbox" id="hiredBefore" class="chkhiredBefore mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Have you ever been employed in this company?</span>
+                            </label>
+
+                            <div class="row" style="display:none;">
+
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PrevDateHired, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                        @Html.Label("From", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PrevDateHired, null, new { @class = "formErrorCode " })
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PrevPosition, new { @class = "mdl-textfield__input" })
+                                        @Html.Label("Last position", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PrevPosition, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.PreDateLeaved, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                        @Html.Label("To", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.PreDateLeaved, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="willingProvince">
+                                @Html.CheckBoxFor(p => p.DesiredEmploymentDetails.CanAssignedToProvince, new { id = "chkWillingProvince", @class = "childValue", style = "display:none;" })
+                                <input type="checkbox" id="willingProvince" class="chkhiredBefore mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Are you willing to be assigned in the province?</span>
+                            </label>
+
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.DesiredProvince, new { @class = "mdl-textfield__input" })
+                                        @Html.Label("What province?", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.DesiredProvince, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="presentlyEmployed">
+                                @Html.CheckBoxFor(p => p.DesiredEmploymentDetails.IsPresentlyEmployed, new { id = "chkWillingProvince", @class = "childValue", style = "display:none;" })
+                                <input type="checkbox" id="presentlyEmployed" class="chkhiredBefore mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Are you Presently Employed?</span>
+                            </label>
+
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(p => p.DesiredEmploymentDetails.DateAvailable, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                        @Html.Label("Date Available", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.DesiredEmploymentDetails.DateAvailable, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label class="chkBoxWithChildView mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hasCriminalCase">
+                                @Html.CheckBoxFor(p => p.IsHasCriminalCase, new { id = "chkHasCriminalCase", @class = "childValue", style = "display:none;" })
+                                <input type="checkbox" id="hasCriminalCase" class="chkhiredBefore mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Have you been convicted of any Administrative , Civil or Criminal Case?</span>
+                            </label>
+
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                        @Html.TextAreaFor(p => p.CriminalCaseNature, 5, 5, new { @class = "mdl-textfield__input" })
+                                        @Html.Label("State the nature of the case", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.CriminalCaseNature, null, new { @class = "formErrorCode" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <b>In Case of emergency , Please notify:</b>
+                    <hr />
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.EmergencyContactDetails.Name, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Name", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmergencyContactDetails.Name, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.EmergencyContactDetails.Relationship, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Relationship", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmergencyContactDetails.Relationship, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.EmergencyContactDetails.Address, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Address", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmergencyContactDetails.Address, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.EmergencyContactDetails.ContactNumber, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Contact Number(Home)", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmergencyContactDetails.ContactNumber, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                @Html.TextBoxFor(p => p.EmergencyContactDetails.MobileNumber, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Mobile Number", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmergencyContactDetails.MobileNumber, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <b>Character reference(not related to you)</b>
+                    <hr />
+
+
+                    <div class="row">
+                        <input type="button" id="addCharacterRef" class="btn btn-success" value="Add" />
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div id="characterReferenceList">
+
+                            @if (Model.CharacterReferences != null)
+                            {
+                                foreach (var item in Model.CharacterReferences.Where(c => c.IsDeleted != true))
+                                {
+                                    Html.RenderPartial("CharacterReference", item);
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <hr />
+                    <b>Explain you reasons for applying in this Company</b>
+                    <hr />
+                    <div class="row">
+                        <div class="thumbnail">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                                        @Html.TextAreaFor(p => p.ApplyingReason, 10, 10, new { @class = "mdl-textfield__input" })
+                                        @Html.Label("Explaination", new { @class = "mdl-textfield__label" })
+                                        @Html.ValidationMessageFor(p => p.ApplyingReason, null, new { @class = "formErrorCode " })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+
+
+                </div>
+
+            </div>
+
+            <div class="thumbnail">
+                <input type="submit" class="btn btn-success" value="Save Information" />
+            </div>
+        </div>
+    </div>
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/AccountModule")
+@Scripts.Render("~/bundles/BootstrapMaterialDatetimePicker")
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Register');
+
+
+    })
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

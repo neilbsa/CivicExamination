@@ -1,0 +1,88 @@
+﻿@model ExaminationEntity.ExaminationModels.Category
+
+
+
+@{ 
+    Layout = null;
+}
+
+
+
+@using (Html.BeginForm("Create","Category",FormMethod.Post,new { id="createCategoryFrm" }))
+{
+
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">New Category</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                @Html.TextBoxFor(p => p.CategoryName, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Category Name", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.CategoryName, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h4>Question List</h4>
+                        </div>
+                         
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <button type="button" id="createQuestionBtn" class="dialog-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Create Question</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="demo-list-control mdl-list">
+                            <li class="mdl-list__item">
+                                <i class="mdl-list__item-avatar"><span class="glyphicon glyphicon-question-sign"></span></i>
+
+                                    <span class="mdl-list__item-primary-content">
+                                        Bacon ipsum dolor amet shoulder fatback filet mignon, ground round venison shank meatloaf hamburger jowl frankfurter tenderloin spare ribs alcatra pig jerky. Salami cupim ribeye pastrami jerky tongue. Shankle fatback tail pig. Leberkas beef alcatra bacon
+                                    </span>
+                                    <span class="mdl-list__item-secondary-info">
+                                        Multiple choice
+                                    </span>
+                                   
+                                    <span class="mdl-list__item-secondary-action">
+                                        <button id="111" type="button"
+                                                class="mdl-button mdl-js-button mdl-button--icon">
+                                            <i class="glyphicon glyphicon-option-vertical"></i>
+                                        </button>
+
+                                        <ul class="listUserMenu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                            data-mdl-for="111">
+                                            <li>@Html.ActionLink("Update", "Update", new { Id = 11 }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect " })</li>
+                                            <li>@Html.ActionLink("View Details", "Details", new { Id = 11 }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect" })</li>
+                                        </ul>
+                                    </span>
+                               
+                            </li>
+                           
+                         
+                          </ul>
+
+                    </div>*@
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Create Category');
+    })
+</script>

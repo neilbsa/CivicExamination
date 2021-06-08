@@ -1,0 +1,24 @@
+﻿
+@model ExaminationEntity.ExaminationModels.CategoryQuestion
+
+
+@{
+    Layout = null;
+ }
+
+
+@if (Model.QuestionType == "Multiple_Choice")
+{
+    Html.RenderPartial("Multiple_ChoiceReadOnly", Model);
+
+}
+else if (Model.QuestionType == "Matching")
+{
+    Html.RenderPartial("MatchingReadOnly", Model);
+}
+else if (Model.QuestionType == "Essay")
+{
+    Html.RenderPartial("EssayReadOnly", Model);
+}
+
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ExaminationEntity.Communication.ChatDetails>
+
+@{
+    Layout = null;
+ }
+
+
+<div class="chatDetailsVer activeChatHead right pull-right @ViewBag.userFrom" id="@ViewBag.userId" data-userConId="@ViewBag.userId">
+    <div class="panel panel-default">
+        <div class="panel-heading panelHead">
+            <div class="panel-title">
+               @ViewBag.userFrom
+                <span class="glyphicon glyphicon glyphicon-remove pull-right removeCurrent"></span>
+            </div>
+        </div>
+        <div class="panel-body popChatBody">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chatListMessages">
+
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            if (item.MessageFrom == User.Identity.Name)
+                            {
+
+                                @Html.Partial("PopChatItemDarker", item.Message)
+
+
+                            }
+                            else
+                            {
+                                @Html.Partial("PopChatItem", item.Message)
+                            }
+
+                        }
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 chatHeadTextArea" style="max-height:40px;height:40px;padding:0px;">
+                  <textarea class="chatMessageDetails" placeholder="Type Here.." style="width:100%;resize:none"></textarea>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chatButtonParent" style="background-color:indigo;height:100%;">
+                    <button type="button" class="btn btn-success btn-md btnSendSample sendMessageBtn" style="border-radius:unset;width:100%;height:100%;padding:14px"><span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,424 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.page-content .mdl-layout__content {
+    background-color: gray;
+    margin: 10px;
+}
+
+.hiddenCheck {
+    visibility: hidden
+}
+
+
+.choicesPanel {
+    cursor: pointer;
+}
+
+
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: cornflowerblue;
+    color: white;
+    background-color: dodgerblue;
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.isSelectedThumbnail {
+    background-color: beige;
+    border-color: black;
+}
+
+
+
+
+/* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container .right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.messageContainer {
+    width: 90%
+}
+
+.memberList {
+    overflow-y: scroll;
+    height: 80vh;
+    max-height: 80vh;
+}
+
+.mdl-list__item--two-line .mdl-list__item-primary-content {
+    height: auto;
+}
+
+.examinerDashboardHeader {
+    color: whitesmoke;
+    margin-top: -10px;
+    position: absolute;
+    z-index: 100;
+    top: -40px;
+}
+
+
+
+.questionListQuestionSubDetail {
+    font-size: xx-small;
+}
+
+.carouselImage {
+    max-width: 600px;
+    max-height: 70%;
+}
+
+.mdl-list__item-primary-content {
+    padding: 20px;
+}
+
+.ui-autocomplete {
+    z-index: 5000;
+}
+
+.civicLoginLogo {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+.loginContainer {
+    margin-top: 10%;
+}
+
+.loginForm {
+    width: 30%;
+}
+
+.loginContainer {
+    height: 100%;
+}
+
+.ApplicationName {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.watermark::after {
+    content: "";
+    background-image: url('../resources/carousel/c8.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.13;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.questionImg {
+    max-width: 100%;
+}
+
+.choiceImg {
+    max-width: 40%;
+}
+
+.page-breaker {
+    display: block;
+    clear: both;
+    page-break-after: always;
+}
+
+.mythumbnail {
+    background-color: transparent;
+    position: sticky;
+    width: 90%;
+    height: 83%;
+}
+
+.backDrop {
+    width: 90%;
+    height: 83%;
+    margin-bottom: 20px;
+    position: absolute;
+    opacity: 0.7;
+}
+
+.loginFormContainer {
+    height: 484px;
+}
+
+
+.menuButton {
+    margin-bottom: 5px;
+}
+
+.myList {
+    margin-top: 100px;
+}
+
+
+.searchUser {
+    position: fixed;
+    background-color: white;
+}
+
+
+
+
+
+.UserContainerbackDrop {
+    background-color: blue;
+    position: absolute;
+}
+/*.UserContainer {
+    background-color: red;
+  
+}*/
+
+/*.userAction{
+
+    background-color:red;
+    margin-right:20px;
+  
+}*/
+
+
+/*.addBtnXs {
+    margin-top: 139%;
+    margin-left: 77%;
+
+    position: fixed;
+    z-index: 6;
+}
+.addBtnSm {
+    margin-top: 115%;
+    margin-left: 88%;
+   
+    position: fixed;
+    z-index: 6;
+}
+
+.addBtnLg {
+    position: fixed;
+    z-index: 6;
+    margin-top: 38%;
+    margin-left: 67%;
+}
+
+.addBtnMd {
+    position: fixed;
+    z-index: 6;
+    margin-top: 100%;
+    margin-left: 90%;
+}*/
+
+.formErrorCode {
+    color: red;
+    font-size: xx-small;
+}
+
+.listErrorCode {
+    color: red;
+    font-size: small;
+}
+
+
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../Scripts/bootstrap-material-datepicker/font/Material-Design-Icons.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.inactiveSidePanel {
+    position: fixed;
+    right: 10px;
+    bottom: 0px;
+    background-color: red;
+    height: 25px;
+    width: 300px;
+    display: block;
+}
+
+.activeSidePanel {
+    position: fixed;
+    right: 10px;
+    bottom: 0px;
+    background-color: red;
+    height: 500px;
+    width: 300px;
+    display: block;
+}
+
+.bottomGroup {
+    position: fixed;
+    right: 300px;
+    bottom: 0px;
+    background-color: transparent;
+    height: 300px;
+    width: 100%;
+    display: block;
+}
+
+.chatDetailsVer {
+    position: relative;
+    right: 300px;
+    margin-right: 10px;
+    width: 300px;
+    background-color: greenyellow;
+}
+
+.chatDetailsVer {
+    position: relative;
+    right: 310px;
+    margin-right: 10px;
+    width: 300px;
+    background-color: greenyellow;
+}
+
+
+
+.activeChatHead {
+    position: fixed;
+    bottom: 0px;
+    height: 300px;
+}
+
+.inactiveChatHead {
+    position: fixed;
+    bottom: 0px;
+    height: 25px;
+}
+
+.chatListMessages {
+    max-height: 230px;
+    overflow-y: scroll;
+    max-height: 230px;
+    min-height: 230px;
+    padding-bottom:10px;
+    /*background-color:red;*/
+}
+
+.panelHead {
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+}
+
+.popChatBody {
+    padding-top: 0px;
+}
+
+.chatButtonParent {
+    padding: 0px;
+    margin: 0px;
+}
+
+.miniMessageContainer {
+    padding: 0px;
+    margin-bottom: -2px;
+    width: 97%;
+    word-wrap:break-word;
+}
+
+.miniMessageContainer > p {
+    font-size: small;
+    margin-bottom: 10px;
+    line-height: 15px;
+
+}
+
+
+.chatContainerFrom {
+    padding-left: 4px;
+}
+
+.chatContainerTo {
+    padding-left: 30px;
+    padding-right: 0px;
+}
+
+
+.memberPopChatList {
+    height: 477px;
+}
+
+.chatMemberItem {
+    padding: 2px;
+    padding-left: 10px;
+}
+
+
+.onlineNotification {
+    background-color: lightslategrey;
+    border-radius: 100px;
+    width: 12px;
+    height: 12px;
+    margin-right: 0px;
+}
+
+
+.onlineIcon{
+    padding-right:0px;
+}
+
+.chatMemberOnline{
+    padding-left:0px;
+}

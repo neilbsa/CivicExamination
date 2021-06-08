@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ExaminationEntity.ExaminationModels.Ta3Employee>
+
+
+
+<div class="row">
+    <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+        <div class="list-group">
+
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="list-group-item">
+                        <div class="list-group-item-text">
+                            <div class="row">
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="row" style="font-size:large">
+                                        <b> @String.Format("{0} - {1}{2},{3}", item.EmployeeNo, item.Firstname, item.MiddleName, item.LastName)</b>
+                                    </div>
+                                    <div class="row">
+                                        @String.Format("Position: {0}", item.EmployeePositionLevel)
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+
+                                    @if (!"Accepted".Equals(item.Status))
+                                    {
+                                        <button class="btn btn-success proceedEvaluationBtn" data-AppraisalId="@item.Id">Proceed</button>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Show Details","Details", "EvaluationAnswerSheet",new { Id =item.Id },new { @class="btn btn-info" })
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/EvaluationModule")

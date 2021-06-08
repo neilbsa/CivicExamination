@@ -1,0 +1,64 @@
+﻿@model  ExaminationEntity.ExaminationModels.QuestionChoices
+@{
+    Layout = null;
+}
+
+
+    <tr>
+                @using (Html.BeginCollectionItem("QuestionsChoices"))
+                {
+                        <td>
+
+                            @if (Model.IsCorrectAnswer)
+                            {
+                                <span class="glyphicon glyphicon-ok"></span>
+                            }
+                       
+                        </td>
+                        <td>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(m=>m.ChoiceString, null, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Description", new { @class = "mdl-textfield__label" })
+              
+                            </div>
+                        </td>
+                        <td>
+                      
+                            <div class="choiceImageContainer">
+                               
+                                @if (Model.choiceImage != null)
+                                {
+                                    <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+                                }
+                            </div>
+                        </td>
+                 
+                }
+    </tr>
+
+@*@using (Html.BeginCollectionItem("QuestionsChoices"))
+    {
+        <tr>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        &nbsp;
+                        <button type="button" class="close removeChoiceBtn"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            @Html.TextBoxFor(m => m.ChoiceString, null, new { @class = "mdl-textfield__input" })
+                            @Html.Label("Description", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(m => m.ChoiceString, null, new { @class = "formErrorCode " })
+                        </div>
+                        <label class="btn btn-default btn-file">
+                            Browse Question Image @Html.TextBoxFor(m => m.choiceImageModel, new { @class = "choiceImageUpload", type = "file", style = "display: none;" })
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </tr>
+
+
+    }*@
+@Scripts.Render("~/bundles/Categorydetails")

@@ -1,0 +1,373 @@
+﻿
+@model ExaminationEntity.ExaminationModels.AppraisalEmployeeAnswerModel
+
+
+@using (Html.BeginForm("Update", "EvaluationAnswerSheet", FormMethod.Post, new { id = "appraisalSheetFrm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id,new { id="appraisalModelId" })
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">Performance Appraisal (@Model.EmployeeDetail.AppraisalDetails.Type)</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h4>
+                                        @String.Format("{0} {1} {2}", Model.EmployeeDetail.Firstname, Model.EmployeeDetail.MiddleName, Model.EmployeeDetail.LastName)
+                                    </h4>
+                                    <p>Fullname</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="thumbnail">
+
+                                <div class="caption">
+                                    <h4>
+                                        @Model.EmployeeDetail.EmployeePositionLevel
+                                    </h4>
+                                    <p>Position</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            Company:   @Model.EmployeeDetail.CompanyName
+                        </div>
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            Email:   @Model.EmployeeDetail.EmailAddress
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            DateHired:   @Model.EmployeeDetail.DateHired
+                        </div>
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            Dept:   @Model.EmployeeDetail.Dept
+                        </div>
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            Immediate Superior : @User.Identity.Name
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            Appraisal Period:   @Model.EmployeeDetail.AppraisalBatchDetails.Period
+                        </div>
+                        <div style="border-radius:5px; padding:10px;border: 1px solid #ddd;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            Appraisal Date::   @Model.EmployeeDetail.AppraisalBatchDetails.AppraisalDate
+                        </div>
+
+                    </div>
+                    @*<div class="row">
+                        Corporate Value : @Model.EmployeeDetail.AppraisalDetails.Description
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <ul class="nav nav-tabs">
+
+                <li><a data-toggle="tab" class="active" href="#KRA">KRA</a></li>
+                @foreach (var item in Model.CompetencygroupAnswer)
+                {
+                    <li><a data-toggle="tab" href="@String.Format("#TAB{0}",item.Id)">@item.GroupType</a></li>
+                }
+                <li><a data-toggle="tab" href="#overallPerf">Over All</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="tab-content">
+                <div id="KRA" class="tab-pane fade in active">
+                    <div class="row">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Rating Scale
+                                    </th>
+                                    <th>
+                                        Score
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>EXCELLENT (> 100% Achievement of Targets)</td>
+                                    <td>5.00</td>
+                                </tr>
+                                <tr>
+                                    <td>OUTSTANDING (100% Achievement of Targets)</td>
+                                    <td>4.00</td>
+                                </tr>
+                                <tr>
+                                    <td>SATISFACTORY (90% Achievement of Targets)</td>
+                                    <td>3.00</td>
+                                </tr>
+                                <tr>
+                                    <td>NEEDS IMPROVEMENT (80% Achievement of Targets)</td>
+                                    <td>2.00</td>
+                                </tr>
+                                <tr>
+                                    <td>UNACCEPTABLE (&le; 80% Achievement of Targets)</td>
+                                    <td>1.00</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <table id="KRAtbl" class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        KRA
+                                    </th>
+                                    <th class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        RAW SCORE
+                                    </th>
+                                    <th class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        WEIGHT(%)
+                                    </th>
+                                    <th class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        INDEXED SCORE
+                                    </th>
+                                    <th class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var kra in Model.KRAs.Where(x => x.IsDeleted == false))
+                                {
+                                    @Html.Partial("KRAItemView", kra)
+                                }
+                            </tbody>
+                        </table>
+
+
+
+
+                    </div>
+                    <div class="row">
+                        <div class="thumbnail">
+                            <button type="button" id="addKRABtn" class="btn btn-info">Add KRA</button>
+                        </div>
+                    </div>
+                </div>
+
+                @foreach (var item in Model.CompetencygroupAnswer)
+                {
+                    @*---------------------------------------------------------------------------*@
+
+
+                    @Html.Partial("CompetenciesGroupView", item)
+
+
+                }
+
+                <div id="overallPerf" class="tab-pane fade">
+
+                    <div class="row">
+                        <div class="thumbnail">
+                            <h4> OVER ALL PERFORMANCE RATING</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table id="overallScoresTable" class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Criteria</th>
+                                    <th>Index Score</th>
+                                    <th>Weight(%)</th>
+                                    <th>Weighted Score</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Key Result Area</td>
+                                    <td><span id="kraIndexScore" class="overAllIndexScore"></span></td>
+                                    <td><div id="kraPercentage" class="overAllPercentageScore">@Model.KRAPercentage</div></td>
+                                    <td><span id="kraWeightedScore" class="overallWeightedScore"></span></td>
+                                </tr>
+                                @foreach (var grp in Model.CompetencygroupAnswer)
+                                {
+
+                                    <tr>
+                                        <td>@grp.GroupType</td>
+                                        <td><span id="@String.Format("overAll{0}",grp.Id)" class="overAllIndexScore"></span></td>
+                                        <td><div class="groupPercentage overAllPercentageScore">@grp.Percentage</div> </td>
+                                        <td><span class="groupWeightedScore overallWeightedScore"></span></td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td style="font-weight:bolder; background-color:lightslategray; font-size:large;text-align:right" colspan="3">OVER ALL RATING</td>
+                                    <td style="font-weight:bolder; background-color:lightslategray; font-size:large;"><span id="overAllScore"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>DESCRIPTION</th>
+                                    <th>RATING</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>EXCELLENT (Consistently Exceeds Standards)</th>
+                                    <th>5</th>
+                                </tr>
+                                <tr>
+                                    <th>OUTSTANDING (Frequently  Exceeds Standards)</th>
+                                    <th>4.00 – 4.99</th>
+                                </tr>
+                                <tr>
+                                    <th>SATISFACTORY (Generally Meets Standards)</th>
+                                    <th>3.00 – 3.99 </th>
+                                </tr>
+                                <tr>
+                                    <th>NEEDS IMPROVEMENT (Frequently Fails to Meet Standards)</th>
+                                    <th>2.00 – 2.99</th>
+                                </tr>
+                                <tr>
+                                    <th>UNACCEPTABLE (Fails to Meet Standards)</th>
+                                    <th>1.00 – 1.99</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", placeholder = "Comments" })
+                    </div>
+
+                    <div class="row">
+                        <div class="thumbnail">
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="thumbnail">
+                                        <b>RECOMMENDATION</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="positionRetained">
+                                        @Html.CheckBoxFor(x => x.PositionRetained, new { id = "positionRetained", @class = "mdl-switch__input" })
+                                        <span class="mdl-switch__label">POSITION RETAIN</span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meritIncrease">
+                                        @Html.CheckBoxFor(x => x.MeritIncrease, new { id = "meritIncrease", @class = "mdl-switch__input" })
+                                        <span class="mdl-switch__label">MERIT INCREASE</span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="forPromotion">
+                                        @Html.CheckBoxFor(x => x.ForPomotion, new { id = "forPromotion", @class = "mdl-switch__input" })
+                                        <span class="mdl-switch__label">FOR PROMOTION</span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="forTransfer">
+                                        @Html.CheckBoxFor(x => x.ForTransfer, new { id = "forTransfer", @class = "mdl-switch__input" })
+                                        <span class="mdl-switch__label">FOR TRANSFER</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    @Html.TextAreaFor(x => x.Reasons, new { @class = "form-control", placeholder = "Reasons" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" id="recomendedTrainingSection">
+                        <div class="thumbnail">
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="thumbnail">
+                                        <b>ACTION PLAN</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <table class="table table-bordered table-hover" id="recommendedTrainingTable">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    RECOMMENDED TRAININGS
+                                                </th>
+                                                <th>
+                                                    TIMETABLE
+                                                </th>
+                                                <th>
+                                                    REMARKS
+                                                </th>
+                                                <th>
+
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var training in Model.RecommendedTrainings.Where(c => c.IsDeleted == false))
+                                            {
+                                                @Html.Partial("RecomendedTrainings", training)
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <button type="button" class="btn btn-info" id="addTraining">ADD TRAINING</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="thumbnail">
+
+                    <input type="button" class="btn btn-success" id="saveDraftBtn" value="Save Draft" />
+                    <input type="button" class="btn btn-danger" id="acceptAppraisal" value="Accept Appraisal" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/EvaluationModule")

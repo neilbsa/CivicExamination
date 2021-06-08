@@ -1,0 +1,137 @@
+﻿@model ExaminationEntity.ExaminationModels.UserProfile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <div class="row">
+
+    
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+
+
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Personal Detail</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        
+                                @Html.TextBoxFor(p => p.Firstname, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Firstname", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.Firstname, null, new { @class = "formErrorCode " })
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(p => p.Middlename, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Middlename", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.Middlename, null, new { @class = "formErrorCode " })
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(p => p.Lastname, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Lastname", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.Lastname, null, new { @class = "formErrorCode " })
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @*<input class="mdl-textfield__input" type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Text...</label>*@
+                                @Html.TextBoxFor(p => p.PresentAddress, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Address", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.PresentAddress, null, new { @class = "formErrorCode " })
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(p => p.Gender, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Gender", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.Gender, null, new { @class = "formErrorCode " })
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Contact Detail</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                @Html.TextBoxFor(p => p.EmailAddress, new { @class = "mdl-textfield__input", @readonly = "readonly" })
+                                @Html.Label("Email Address", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.EmailAddress, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                @Html.TextBoxFor(p => p.HomeContact, new { @class = "mdl-textfield__input", @readonly="readonly" })
+                                @Html.Label("Contact Number", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.HomeContact, null, new { @class = "formErrorCode " })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
+           
+            @Html.ActionLink("Back To list","AdminAccountIndex",null,new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+        </div>
+    </div>
+
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Admin Details');
+
+
+      
+
+    })
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

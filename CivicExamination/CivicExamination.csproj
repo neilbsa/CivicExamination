@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1FB54F2-3F8E-49AB-AC6B-392A57F644CB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CivicExamination</RootNamespace>
+    <AssemblyName>CivicExamination</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BeginCollectionItem, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.92.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.92.1\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.3.0\lib\net45\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.3.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.3.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.4-rc\lib\net45\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AuthorizationLogics\authorization.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommunicationController.cs" />
+    <Compile Include="Controllers\CompanyTransactionController.cs" />
+    <Compile Include="Controllers\Evaluation\EvaluationAnswerSheetController.cs" />
+    <Compile Include="Controllers\Evaluation\EvaluationController.cs" />
+    <Compile Include="Controllers\Examination\CategoryController.cs" />
+    <Compile Include="Controllers\Examination\ExaminationController.cs" />
+    <Compile Include="Controllers\Examination\ExaminerController.cs" />
+    <Compile Include="Controllers\Examination\JobPostingController.cs" />
+    <Compile Include="Controllers\Examination\MainExaminationController.cs" />
+    <Compile Include="Controllers\Examination\QuestionController.cs" />
+    <Compile Include="Controllers\Examination\ScheduleController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Ta3BaseController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hubs\SystemComm.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CommunicationViewModels.cs" />
+    <Compile Include="Models\EvaluationViewModel.cs" />
+    <Compile Include="Models\ExistingAccountViewModel.cs" />
+    <Compile Include="Models\ExamViewModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\color.css" />
+    <Content Include="Content\dialog-polyfill.css" />
+    <Content Include="Content\MaterialFont\css\font.css" />
+    <Content Include="Content\MaterialModal\css\material-modal.css" />
+    <Content Include="Content\MaterialModal\css\material-modal.min.css" />
+    <Content Include="Content\MaterialModal\js\material-modal.min.js" />
+    <Content Include="Content\mdl-v1.1.2\material.css" />
+    <Content Include="Content\mdl-v1.1.2\material.js" />
+    <Content Include="Content\mdl-v1.1.2\material.min.css" />
+    <Content Include="Content\mdl-v1.1.2\material.min.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="resources\abstractpic\1.gif" />
+    <Content Include="resources\abstractpic\1a.gif" />
+    <Content Include="resources\abstractpic\1b.gif" />
+    <Content Include="resources\abstractpic\1c.gif" />
+    <Content Include="resources\abstractpic\1d.gif" />
+    <Content Include="resources\abstractpic\2.gif" />
+    <Content Include="resources\abstractpic\2a.gif" />
+    <Content Include="resources\abstractpic\2b.gif" />
+    <Content Include="resources\abstractpic\2c.gif" />
+    <Content Include="resources\abstractpic\2d.gif" />
+    <Content Include="resources\abstractpic\3.gif" />
+    <Content Include="resources\abstractpic\3a.gif" />
+    <Content Include="resources\abstractpic\3b.gif" />
+    <Content Include="resources\abstractpic\3c.gif" />
+    <Content Include="resources\abstractpic\3d.gif" />
+    <Content Include="resources\abstractpic\4.gif" />
+    <Content Include="resources\abstractpic\4a.gif" />
+    <Content Include="resources\abstractpic\4b.gif" />
+    <Content Include="resources\abstractpic\4c.gif" />
+    <Content Include="resources\abstractpic\4d.gif" />
+    <Content Include="resources\abstractpic\5a.gif" />
+    <Content Include="resources\abstractpic\5b.gif" />
+    <Content Include="resources\abstractpic\5c.gif" />
+    <Content Include="resources\abstractpic\5d.gif" />
+    <Content Include="resources\carousel\c1.jpg" />
+    <Content Include="resources\carousel\c10.jpg" />
+    <Content Include="resources\carousel\c2.jpg" />
+    <Content Include="resources\carousel\c3.jpg" />
+    <Content Include="resources\carousel\c4.jpg" />
+    <Content Include="resources\carousel\c5.jpg" />
+    <Content Include="resources\carousel\c6.jpg" />
+    <Content Include="resources\carousel\c7.jpg" />
+    <Content Include="resources\carousel\c8.jpg" />
+    <Content Include="resources\carousel\c9.jpg" />
+    <Content Include="resources\clogo.png" />
+    <Content Include="resources\companyicons\addimage.png" />
+    <Content Include="resources\companyicons\civiclogo.png" />
+    <Content Include="resources\companyicons\search.png" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MaterialFont\fonts\2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\mdl-v1.1.2\package.json" />
+    <Content Include="Content\mdl-v1.1.2\material.min.js.map" />
+    <Content Include="Content\mdl-v1.1.2\material.min.css.map" />
+    <Content Include="Content\mdl-v1.1.2\LICENSE" />
+    <Content Include="Content\mdl-v1.1.2\bower.json" />
+    <Content Include="App_Browsers\qt.browser" />
+    <None Include="packages.config" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Rotativa\wkhtmltox.dll" />
+    <Content Include="Scripts\bootstrap-material-datepicker\css\bootstrap-material-datetimepicker.css" />
+    <Content Include="Scripts\bootstrap-material-datepicker\font\Material-Design-Icons.svg" />
+    <Content Include="Scripts\bootstrap-material-datepicker\js\bootstrap-material-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\bower.json" />
+    <Content Include="Scripts\bootstrap-year-calendar\docs\index.rst" />
+    <Content Include="Scripts\bootstrap-year-calendar\LICENSE" />
+    <Content Include="Scripts\bootstrap-year-calendar\package.json" />
+    <Content Include="Scripts\bootstrap-year-calendar\README.md" />
+    <Content Include="Scripts\bootstrap-material-datepicker\font\Material-Design-Icons.eot" />
+    <Content Include="Scripts\bootstrap-material-datepicker\font\Material-Design-Icons.ttf" />
+    <Content Include="Scripts\bootstrap-material-datepicker\font\Material-Design-Icons.woff" />
+    <Content Include="Scripts\bootstrap-material-datepicker\font\Material-Design-Icons.woff2" />
+    <Content Include="Rotativa\libwkhtmltox.a" />
+    <None Include="Properties\PublishProfiles\CLOUD-CIVICEXAM-PROD.pubxml" />
+    <None Include="Properties\PublishProfiles\Replicate.pubxml" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="resources\CompanyLogos\PRIMEQUEST.jpg" />
+    <Content Include="resources\CompanyLogos\TOPSPOT.jpg" />
+    <Content Include="resources\CompanyLogos\CMI.jpg" />
+    <Content Include="resources\CompanyLogos\CIVIC.jpg" />
+    <Content Include="Scripts\bootstrap-year-calendar\css\bootstrap-year-calendar.css" />
+    <Content Include="Scripts\bootstrap-year-calendar\css\bootstrap-year-calendar.min.css" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\bootstrap-year-calendar.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\bootstrap-year-calendar.min.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.ca.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.cs.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.de.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.es.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.fr.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.hr.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.id.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.is.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.it.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.ja.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.lt.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.nl.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.pl.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.pt.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.ru.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.tr.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.ua.js" />
+    <Content Include="Scripts\bootstrap-year-calendar\js\languages\bootstrap-year-calendar.uk.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CustomScripts\Account\AccountScripts.js" />
+    <Content Include="Scripts\CustomScripts\BaseScripts\BaseScripts.js" />
+    <Content Include="Scripts\CustomScripts\category\Category.js" />
+    <Content Include="Scripts\CustomScripts\category\QuestionDetail.js" />
+    <Content Include="Scripts\CustomScripts\category\QuestionScripts.js" />
+    <Content Include="Scripts\CustomScripts\Comms\MainComm.js" />
+    <Content Include="Scripts\CustomScripts\Evaluation\Evaluator.js" />
+    <Content Include="Scripts\CustomScripts\Evaluation\EvaluationAdmin.js" />
+    <Content Include="Scripts\CustomScripts\Examination\Examination.js" />
+    <Content Include="Scripts\CustomScripts\Examination\Schedule.js" />
+    <Content Include="Scripts\CustomScripts\JobPosting\JobPosting.js" />
+    <Content Include="Scripts\CustomScripts\MainExamination\MainExamination.js" />
+    <Content Include="Scripts\CustomScripts\MainExamination\OnExamination.js" />
+    <Content Include="Scripts\dialog-polyfill.js" />
+    <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
+    <Content Include="Scripts\inc\readme.css" />
+    <Content Include="Scripts\inc\TimeCircles.css" />
+    <Content Include="Scripts\inc\TimeCircles.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\RegisterAdmin.cshtml" />
+    <Content Include="Views\Examiner\Index.cshtml" />
+    <Content Include="Views\Examiner\Create.cshtml" />
+    <Content Include="Views\Account\CompanySelectionPartialView.cshtml" />
+    <Content Include="Views\Account\RolesSelectionPartialView.cshtml" />
+    <Content Include="Views\Shared\SystemMessage.cshtml" />
+    <Content Include="Views\Account\SelectCompany.cshtml" />
+    <Content Include="Views\Examiner\RegisterExaminer.cshtml" />
+    <Content Include="Views\Examiner\Update.cshtml" />
+    <Content Include="Views\Examiner\Details.cshtml" />
+    <Content Include="Views\Account\UpdatePassword.cshtml" />
+    <Content Include="Views\Account\AdminAccountIndex.cshtml" />
+    <Content Include="Views\Account\UpdateAdmin.cshtml" />
+    <Content Include="Views\Account\AdminDetails.cshtml" />
+    <Content Include="Views\Account\UpdateAdminPassword.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Update.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Question\CreateQuestion.cshtml" />
+    <Content Include="Views\Question\Multiple_Choice.cshtml" />
+    <Content Include="Views\Question\Matching.cshtml" />
+    <Content Include="Views\Question\ExamChoicesTemplate.cshtml" />
+    <Content Include="Views\Category\IndexItemView.cshtml" />
+    <Content Include="Views\Question\QuestionListItem.cshtml" />
+    <Content Include="Views\Shared\QuestionListView.cshtml" />
+    <Content Include="Views\Question\ExamChoicesTemplateCheckbox.cshtml" />
+    <Content Include="Views\Question\Essay.cshtml" />
+    <Content Include="Views\Question\Update.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
+    <Content Include="Views\Question\MatchingReadOnly.cshtml" />
+    <Content Include="Views\Question\ExamChoicesTemplateCheckboxReadonly.cshtml" />
+    <Content Include="Views\Question\ExamChoicesTemplateReadOnly.cshtml" />
+    <Content Include="Views\Question\Multiple_ChoiceReadOnly.cshtml" />
+    <Content Include="Views\Question\EssayReadOnly.cshtml" />
+    <Content Include="Views\Examination\Index.cshtml" />
+    <Content Include="Views\Examination\IndexItemView.cshtml" />
+    <Content Include="Views\Examination\Create.cshtml" />
+    <Content Include="Views\Examination\ExaminationCategoryBuild.cshtml" />
+    <Content Include="Views\Examination\Update.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
+    <Content Include="Views\Schedule\Create.cshtml" />
+    <Content Include="Views\Schedule\ScheduledMember.cshtml" />
+    <Content Include="Views\Schedule\Update.cshtml" />
+    <Content Include="Views\Schedule\Delete.cshtml" />
+    <Content Include="Views\Schedule\ScheduledMemberReadOnly.cshtml" />
+    <Content Include="Views\Home\ExaminerDashboard.cshtml" />
+    <Content Include="Views\MainExamination\OnExamination.cshtml" />
+    <Content Include="Views\MainExamination\QuestionView.cshtml" />
+    <Content Include="Views\MainExamination\Multiple_Choice.cshtml" />
+    <Content Include="Views\MainExamination\Essay.cshtml" />
+    <Content Include="Views\MainExamination\Matching.cshtml" />
+    <Content Include="Views\MainExamination\MultipleChoiceChoices.cshtml" />
+    <Content Include="Views\MainExamination\MatchingChoices.cshtml" />
+    <Content Include="Views\MainExamination\EssayUserAnswer.cshtml" />
+    <Content Include="Views\Schedule\ViewResult.cshtml" />
+    <Content Include="Views\MainExamination\ViewUserExamination.cshtml" />
+    <Content Include="Views\MainExamination\WithSelectionQuestion.cshtml" />
+    <Content Include="Views\MainExamination\WithSelectionQuestionChoices.cshtml" />
+    <Content Include="Views\MainExamination\EssayUserAnswerReadOnly.cshtml" />
+    <Content Include="Views\MainExamination\EssayReadOnly.cshtml" />
+    <Content Include="Views\MainExamination\UpdateExamination.cshtml" />
+    <Content Include="Views\MainExamination\UpdateEssayReadOnly.cshtml" />
+    <Content Include="Views\MainExamination\UpdateEssayUserAnswerReadOnly.cshtml" />
+    <Content Include="Views\MainExamination\UserExaminationReport.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Scripts\jquery.form.min.js.map" />
+    <Content Include="Views\JobPosting\Index.cshtml" />
+    <Content Include="Views\JobPosting\Create.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\JobPosting\IndexViewItem.cshtml" />
+    <Content Include="Views\JobPosting\Update.cshtml" />
+    <Content Include="Views\JobPosting\JobPostingList.cshtml" />
+    <Content Include="Views\Schedule\PrintResult.cshtml" />
+    <Content Include="Views\Examiner\EmploymentDataSheet.cshtml" />
+    <Content Include="Views\Examiner\EducationAttained.cshtml" />
+    <Content Include="Views\Examiner\ProfessionalLicenses.cshtml" />
+    <Content Include="Views\Examiner\EmploymentHistory.cshtml" />
+    <Content Include="Views\Examiner\CharacterReference.cshtml" />
+    <Content Include="Views\Examiner\ValidateUserForRegistration.cshtml" />
+    <Content Include="Views\JobPosting\RenderExaminerReport.cshtml" />
+    <Content Include="Views\Evaluation\Index.cshtml" />
+    <Content Include="Views\Evaluation\Create.cshtml" />
+    <Content Include="Views\Evaluation\EmployeeCreateSetup.cshtml" />
+    <Content Include="Views\Evaluation\EvaluatorIndex.cshtml" />
+    <Content Include="Views\Evaluation\EvaluateeIndex.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\GenerateAnswerSheet.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\CompetenciesGroupView.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\KRAItemView.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\RecomendedTrainings.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\Details.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\AcceptanceCodeView.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\RecomendedTrainingsReadOnly.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\KRAItemViewReadOnly.cshtml" />
+    <Content Include="Views\EvaluationAnswerSheet\CompetenciesGroupViewReadOnly.cshtml" />
+    <Content Include="Views\Evaluation\Details.cshtml" />
+    <Content Include="Views\Evaluation\EmployeeCreateSetupReadOnly.cshtml" />
+    <Content Include="Views\Evaluation\CreateReport.cshtml" />
+    <Content Include="Views\Question\Delete.cshtml" />
+    <Content Include="Views\Communication\Index.cshtml" />
+    <Content Include="Views\Communication\ChatDetails.cshtml" />
+    <Content Include="Views\Communication\ChatContainerRecieveFrom.cshtml" />
+    <Content Include="Views\Communication\ChatContainerSendTo.cshtml" />
+    <Content Include="Views\Examiner\EmploymentDatasheetReport.cshtml" />
+    <Content Include="Views\Communication\PopChatContainer.cshtml" />
+    <Content Include="Views\Communication\PopChatItemDarker.cshtml" />
+    <Content Include="Views\Communication\PopChatItem.cshtml" />
+    <Content Include="Views\JobPosting\JobpostingExaminationItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
+    <Folder Include="TempImages\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\EvalSetup\" />
+    <Folder Include="Views\ScheduleExaminer\" />
+    <Folder Include="Views\Ta3Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CivicExamProcedures\CivicExamProcedures.csproj">
+      <Project>{3974E097-6E9C-417A-BB8E-9AE7608A1199}</Project>
+      <Name>CivicExamProcedures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExaminationEntity\ExaminationEntity.csproj">
+      <Project>{1532b66d-a3c1-4c81-bbdf-c861f69f28de}</Project>
+      <Name>ExaminationEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\bootstrap-year-calendar\typescript\bootstrap-year-calendar.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51065</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55181/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

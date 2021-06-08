@@ -1,0 +1,53 @@
+﻿@model ExaminationEntity.ExaminationModels.CharacterReference
+@{
+    Layout = null;
+}
+
+<div class="thumbnail">
+
+    @using (Html.BeginCollectionItem("CharacterReferences"))
+    {
+
+        if (!object.ReferenceEquals(Model, null))
+        {
+            @Html.HiddenFor(x => x.Id);
+        }
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.Fullname, new { @class = "mdl-textfield__input" })
+                    @Html.Label("Name", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.Fullname, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.Company, new { @class = "mdl-textfield__input" })
+                    @Html.Label("Company", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.Company, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.Position, new { @class = "mdl-textfield__input" })
+                    @Html.Label("Position", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.Position, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.ContactNumber, new { @class = "mdl-textfield__input" })
+                    @Html.Label("Contact Number", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.ContactNumber, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <br />
+                <button class="deleteCharRefRow btn btn-danger" type="button">Remove</button>
+            </div>
+        </div>
+
+
+    }
+</div>

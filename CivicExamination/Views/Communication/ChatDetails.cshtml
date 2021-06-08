@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ExaminationEntity.Communication.ChatDetails>
+
+
+
+<div class="row memberList chatDetailList" id="1111">
+
+    @if (Model != null)
+    {
+        foreach (var chats in Model)
+        {
+            if (chats.MessageTo == User.Identity.Name)
+            {
+                @Html.Partial("ChatContainerRecieveFrom", chats);
+            }
+            else
+            {
+                @Html.Partial("ChatContainerSendTo", chats);
+            }
+        }
+    }
+</div>
+<div class="row chat" id="chatControls">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        @Html.TextArea("Message", new { @class = "form-control" })
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 chatConsole" >
+        <input type="hidden" id="recieverName" value="11111"/>
+        <button type="button" class="btn btn-success sendMessage">Send</button>
+    </div>
+</div>

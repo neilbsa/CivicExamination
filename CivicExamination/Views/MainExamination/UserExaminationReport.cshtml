@@ -1,0 +1,69 @@
+﻿
+@model  CivicExamination.Models.ScheduleExaminerViewModel
+
+@{ 
+    Layout = null;
+}
+
+
+@Styles.Render("~/Content/MaterializeCss")
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/BoostrapCalendarCss")
+
+
+
+
+<link href="@Server.MapPath("~/Content/mdl-v1.1.2/material.min.css")" rel="stylesheet" />
+
+<link href="@Server.MapPath("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<link href="@Server.MapPath("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+<link href="@Server.MapPath( "~/Content/site.css")" rel="stylesheet" />
+
+<div class="row">
+    <div style="font-weight:600;font-size:x-large" class="col-xs-12 text-center col-sm-12 col-md-12 col-lg-12">
+        User Answer Sheet
+    </div>
+    <div style="font-weight:100;font-size:x-small" class="col-xs-12 text-center col-sm-12 col-md-12 col-lg-12">
+        as of: @DateTime.Now.ToString("yyy-MM-dd")
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Html.Label(Model.Schedule.Examination.ExamTemplateName)</div>
+            <div class="panel-body">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @Html.Label("Fullname: ") @Model.User.Fullname
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @Html.Label("Position Applied: ") @Model.Schedule.JobPostingDetail.JobName
+                </div>
+                <hr />
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    @Html.Label("Questions/Answer")
+                </div>
+                <br/>
+                <br />
+ 
+                @foreach (var item in Model.CorrectedQuestion)
+                {
+                    if (item.Question.QuestionType == "Multiple_Choice" || item.Question.QuestionType == "Matching")
+                    {
+
+                        Html.RenderPartial("WithSelectionQuestion", item);
+                    }
+                    else if (item.Question.QuestionType == "Essay")
+                    {
+                        Html.RenderPartial("EssayReadOnly", item);
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

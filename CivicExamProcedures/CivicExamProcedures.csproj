@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3974E097-6E9C-417A-BB8E-9AE7608A1199}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CivicExamProcedures</RootNamespace>
+    <AssemblyName>CivicExamProcedures</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ApplicationContext.cs" />
+    <Compile Include="Context\DbConnect.cs" />
+    <Compile Include="ExternalContext\Announcement.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\ChangeRestday.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\ChangeSchedule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\CodeDiscipline.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\CompanyPayrollInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\CustomTransactionType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\C__RefactorLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\DeviceCommand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\DisciplineOffens.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\DisciplinePenalty.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\DTRCorrection.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Addresses.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_BenefitTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_ContactInformation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_DisciplinaryAction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Documents.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_EducationalBackground.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Eligibilities.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_EmployeeBenefits.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_EmployeeBenefitTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Families.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Identification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_JobExperiences.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_PersonalAction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_PersonalActionTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_PersonalInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\E201_Trainings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\EmployeeCustomInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\EmployeeTransaction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\GovCertification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\GovCertificationDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\GovCertificationSetting.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Group.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\GroupMember.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\GroupType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Holiday.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\HolidayMember.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Leaf.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\LeaveCredit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\LeaveDeduction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\LeaveProfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\LeaveProfileDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\LeaveType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\OfficialBusiness.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Outbox.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Overtime.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PagibigBracket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Payroll.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Payroll13thMonthCutOff.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollAdjustment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollAllowanceType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollBank.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollCode.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollCodeDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollCommission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollEntry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollJournalVoucher.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollLoan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollLoanType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollProfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollRate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollRateProfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PayrollTransactionType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PhilHealthBracket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PieceRate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PieceRateMultiplier.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PieceWork.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PreviousEmploymentInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\PreviousPayrollEntry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\RestdayLeaf.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\SalaryLevel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\SavedSession.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Schedule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\SeniorityBracket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Setting.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\SingleDaySchedule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\SSSBracket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\Subordinate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\TaxBracket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\TaxBracketType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\TimeLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\UserRight.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\UserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\ZKDevice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalContext\ZKUserInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Methods\IBaseMethod.cs" />
+    <Compile Include="Migrations\201806050751115_InitialDB.cs" />
+    <Compile Include="Migrations\201806050751115_InitialDB.Designer.cs">
+      <DependentUpon>201806050751115_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806051103356_CreateCommentPerGroup.cs" />
+    <Compile Include="Migrations\201806051103356_CreateCommentPerGroup.Designer.cs">
+      <DependentUpon>201806051103356_CreateCommentPerGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806051141294_CreateDeptDateHired.cs" />
+    <Compile Include="Migrations\201806051141294_CreateDeptDateHired.Designer.cs">
+      <DependentUpon>201806051141294_CreateDeptDateHired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806060542049_CreateIndexScore.cs" />
+    <Compile Include="Migrations\201806060542049_CreateIndexScore.Designer.cs">
+      <DependentUpon>201806060542049_CreateIndexScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061229122_CreateRatingScale.cs" />
+    <Compile Include="Migrations\201806061229122_CreateRatingScale.Designer.cs">
+      <DependentUpon>201806061229122_CreateRatingScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070203582_CreateRecommended.cs" />
+    <Compile Include="Migrations\201806070203582_CreateRecommended.Designer.cs">
+      <DependentUpon>201806070203582_CreateRecommended.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070243330_AddKRaPErcentageGroupPercentage.cs" />
+    <Compile Include="Migrations\201806070243330_AddKRaPErcentageGroupPercentage.Designer.cs">
+      <DependentUpon>201806070243330_AddKRaPErcentageGroupPercentage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070333339_updateForTransfer.cs" />
+    <Compile Include="Migrations\201806070333339_updateForTransfer.Designer.cs">
+      <DependentUpon>201806070333339_updateForTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806110205086_RequireIdNumber.cs" />
+    <Compile Include="Migrations\201806110205086_RequireIdNumber.Designer.cs">
+      <DependentUpon>201806110205086_RequireIdNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806110341518_AddDatachangeTrackerTa3Employee.cs" />
+    <Compile Include="Migrations\201806110341518_AddDatachangeTrackerTa3Employee.Designer.cs">
+      <DependentUpon>201806110341518_AddDatachangeTrackerTa3Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120148064_AcceptanceDateNulableandEmailAddress.cs" />
+    <Compile Include="Migrations\201806120148064_AcceptanceDateNulableandEmailAddress.Designer.cs">
+      <DependentUpon>201806120148064_AcceptanceDateNulableandEmailAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120155358_AddCompany.cs" />
+    <Compile Include="Migrations\201806120155358_AddCompany.Designer.cs">
+      <DependentUpon>201806120155358_AddCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120210085_AddCompany1.cs" />
+    <Compile Include="Migrations\201806120210085_AddCompany1.Designer.cs">
+      <DependentUpon>201806120210085_AddCompany1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120620560_CreateEvaluatorId.cs" />
+    <Compile Include="Migrations\201806120620560_CreateEvaluatorId.Designer.cs">
+      <DependentUpon>201806120620560_CreateEvaluatorId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807060524169_CreateChatFet.cs" />
+    <Compile Include="Migrations\201807060524169_CreateChatFet.Designer.cs">
+      <DependentUpon>201807060524169_CreateChatFet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807081303263_ConnStatus.cs" />
+    <Compile Include="Migrations\201807081303263_ConnStatus.Designer.cs">
+      <DependentUpon>201807081303263_ConnStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807081330490_AddIsReadProp.cs" />
+    <Compile Include="Migrations\201807081330490_AddIsReadProp.Designer.cs">
+      <DependentUpon>201807081330490_AddIsReadProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808032240364_ReviseExaminationScoring.cs" />
+    <Compile Include="Migrations\201808032240364_ReviseExaminationScoring.Designer.cs">
+      <DependentUpon>201808032240364_ReviseExaminationScoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808041234436_TieJObpostingToExamination.cs" />
+    <Compile Include="Migrations\201808041234436_TieJObpostingToExamination.Designer.cs">
+      <DependentUpon>201808041234436_TieJObpostingToExamination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeedMethod\Seed.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="ExternalContext\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ExternalContext\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExaminationEntity\ExaminationEntity.csproj">
+      <Project>{1532b66d-a3c1-4c81-bbdf-c861f69f28de}</Project>
+      <Name>ExaminationEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalContext\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ExternalContext\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806050751115_InitialDB.resx">
+      <DependentUpon>201806050751115_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806051103356_CreateCommentPerGroup.resx">
+      <DependentUpon>201806051103356_CreateCommentPerGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806051141294_CreateDeptDateHired.resx">
+      <DependentUpon>201806051141294_CreateDeptDateHired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806060542049_CreateIndexScore.resx">
+      <DependentUpon>201806060542049_CreateIndexScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061229122_CreateRatingScale.resx">
+      <DependentUpon>201806061229122_CreateRatingScale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070203582_CreateRecommended.resx">
+      <DependentUpon>201806070203582_CreateRecommended.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070243330_AddKRaPErcentageGroupPercentage.resx">
+      <DependentUpon>201806070243330_AddKRaPErcentageGroupPercentage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070333339_updateForTransfer.resx">
+      <DependentUpon>201806070333339_updateForTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806110205086_RequireIdNumber.resx">
+      <DependentUpon>201806110205086_RequireIdNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806110341518_AddDatachangeTrackerTa3Employee.resx">
+      <DependentUpon>201806110341518_AddDatachangeTrackerTa3Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120148064_AcceptanceDateNulableandEmailAddress.resx">
+      <DependentUpon>201806120148064_AcceptanceDateNulableandEmailAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120155358_AddCompany.resx">
+      <DependentUpon>201806120155358_AddCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120210085_AddCompany1.resx">
+      <DependentUpon>201806120210085_AddCompany1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120620560_CreateEvaluatorId.resx">
+      <DependentUpon>201806120620560_CreateEvaluatorId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060524169_CreateChatFet.resx">
+      <DependentUpon>201807060524169_CreateChatFet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807081303263_ConnStatus.resx">
+      <DependentUpon>201807081303263_ConnStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807081330490_AddIsReadProp.resx">
+      <DependentUpon>201807081330490_AddIsReadProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808032240364_ReviseExaminationScoring.resx">
+      <DependentUpon>201808032240364_ReviseExaminationScoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808041234436_TieJObpostingToExamination.resx">
+      <DependentUpon>201808041234436_TieJObpostingToExamination.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CivicExamination.Models.ChatHeadViewModel>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+<div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 memberList">
+        <div>
+
+            <ul class="demo-list-two mdl-list ">
+
+                @foreach (var item in Model)
+                {
+                    <li class="mdl-list__item mdl-list__item--two-line chatMemberCard" data-userName="@item.senderName">
+                        <span class="mdl-list__item-primary-content">
+                            @Html.HiddenFor(x=>item.senderName)
+                            <span>@item.senderName</span>
+                            <span class="mdl-list__item-sub-title">@item.NewMessageCount New Message</span>
+                        </span>
+                    </li>
+                }
+
+
+
+
+                @*<li class="mdl-list__item mdl-list__item--two-line chatMemberCard" data-userName="Pia1" style="background-color:">
+                    <span class="mdl-list__item-primary-content">
+
+                        <span>Pia W.</span>
+                        <span class="mdl-list__item-sub-title">62 Episodes</span>
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line chatMemberCard" data-userName="Pia2" style="background-color:">
+                    <span class="mdl-list__item-primary-content">
+
+                        <span>Pia W.</span>
+                        <span class="mdl-list__item-sub-title">62 Episodes</span>
+                    </span>
+                </li>*@
+            </ul>
+      
+     
+        </div>
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+      <div id="messageDetails">
+
+      </div>
+    </div>
+</div>

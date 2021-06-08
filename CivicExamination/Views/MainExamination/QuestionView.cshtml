@@ -1,0 +1,32 @@
+﻿@model ExaminationEntity.ExaminationModels.ScheduleQuestion
+
+
+@{
+    Layout = null;
+}
+
+
+
+
+
+    @if (Model.Question.QuestionType == "Multiple_Choice")
+    {
+        Html.RenderPartial("Multiple_Choice", Model);
+    }
+    else if (Model.Question.QuestionType == "Essay")
+    {
+        Html.RenderPartial("Essay", Model);
+    }
+    else if (Model.Question.QuestionType == "Matching")
+    {
+        Html.RenderPartial("Matching", Model);
+    }
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,155 @@
+﻿
+@model CivicExamination.Models.ScheduleTemplateResultViewModel
+
+@{ 
+    Layout = null;
+}
+@Styles.Render("~/Content/MaterializeCss")
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/BoostrapCalendarCss")
+
+
+
+
+<link href="@Server.MapPath("~/Content/mdl-v1.1.2/material.min.css")" rel="stylesheet" />
+
+<link href="@Server.MapPath("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<link href="@Server.MapPath("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+<link href="@Server.MapPath( "~/Content/site.css")" rel="stylesheet" />
+<div class="row">
+    <div style="font-weight:600;font-size:x-large" class="col-xs-12 text-center col-sm-12 col-md-12 col-lg-12">
+        Examination Result
+    </div>
+    <div style="font-weight:100;font-size:x-small" class="col-xs-12 text-center col-sm-12 col-md-12 col-lg-12">
+        as of: @DateTime.Now.ToString("yyy-MM-dd")
+    </div>
+</div>
+<br/>
+<br />
+<br />
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="examAvatar col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                    <br />
+                    <div style="background-color:@Model.ColorString; border-radius:50%;width:50px;height:50px;">
+                        <p style="text-align:center;font-weight:600;font-size:x-large;color:white;padding-top:0.5em;">@Model.Examination.AvatarText</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        <br />
+                        @Html.Label("Examination Name: ")  @Model.Examination.ExamTemplateName
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("From: ")  @Model.StartDate
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("To: ")  @Model.EndDate
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("Created By: ")  @Model.CreateUser
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("Create Date: ")  @Model.DateCreated
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("Passing(%): ")  @Model.JobPostingDetail.PassingScore
+                    </div>
+
+                </div>
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        @Html.Label("Examination Build")
+                    </div>
+                </div>
+                <hr />
+                @foreach (var item in Model.Examination.TemplateBuild)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                            @Html.Label(item.CategoryDetail.CategoryName) : @item.Items
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Scheduled Members")
+                    </div>
+                </div>
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Fullname
+                            </th>
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Pending
+                            </th>
+                            <th>
+                                Total Score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var examiners in Model.Results)
+                        {
+                            <tr>
+                                <td>
+                                    @examiners.User.Fullname
+                                </td>
+                                <td>
+                                    @examiners.Status
+                                </td>
+
+
+                                <td>
+                                    @examiners.ItemsNotCheck
+                                </td>
+                                <td>
+                                    @if (examiners.Remarks == "Passed")
+                                    {
+                                        <div style="color:green;font-weight:300;">
+                                            @examiners.TotalScore %
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="color:red;font-weight:300;">
+                                            @examiners.TotalScore %
+                                        </div>
+
+                                    }
+                                </td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

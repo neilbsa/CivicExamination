@@ -1,0 +1,81 @@
+﻿
+@model ExaminationEntity.ExaminationModels.ExamTemplate
+
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("Update", "Examination", FormMethod.Post, new { id = "createExaminationFrm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Id)
+    <div id="errorList">
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examination Detail</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-xs-12 col-md-6 col-lg-6">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.TextBoxFor(p => p.ExamTemplateName, new { @class = "mdl-textfield__input" })
+                        @Html.Label("Examination Name", new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(p => p.ExamTemplateName, null, new { @class = "formErrorCode " })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-xs-12 col-md-6 col-lg-6">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.TextBoxFor(p => p.LimitSeconds, new { @class = "mdl-textfield__input" })
+                        @Html.Label("Time Limit(Minutes)", new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(p => p.LimitSeconds, null, new { @class = "formErrorCode " })
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-xs-12 col-md-6 col-lg-6">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.TextBoxFor(p => p.PassingScore, new { @class = "mdl-textfield__input" })
+                        @Html.Label("Passing Score", new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(p => p.PassingScore, null, new { @class = "formErrorCode " })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
+                        @Html.TextAreaFor(p => p.TemplateDescription, 5, 5, new { style = "width:100%;height:60px;", maxlength = 355, @class = "mdl-textfield__input" })
+                        @Html.Label("Description", new { @class = "mdl-textfield__label" })
+                        @Html.ValidationMessageFor(p => p.TemplateDescription, null, new { @class = "formErrorCode " })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Examination Body</div>
+        <div class="panel-body" id="examinationBodyList">
+            <table id="examinationCategoryMainList" class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>No. of Items</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!object.ReferenceEquals(Model, null))
+                {
+                    if (Model.TemplateBuild != null)
+                    {
+                        foreach (var item in Model.TemplateBuild.Where(x=>x.IsDeleted != true).ToList())
+                        {
+                            Html.RenderPartial("ExaminationCategoryBuild", item);
+                        }
+                    }
+                }
+                </tbody>
+            </table>
+            <button id="examinationAddNewCategory" type="button" class="btn btn-info"> Add</button>
+        </div>
+    </div>
+
+}

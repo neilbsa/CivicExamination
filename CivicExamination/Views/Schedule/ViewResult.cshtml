@@ -1,0 +1,152 @@
+﻿@model CivicExamination.Models.ScheduleTemplateResultViewModel
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                @Html.ActionLink("Print Result", "RenderReport", new { schedId = Model.Id }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="examAvatar col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                    <br />
+                    <div style="background-color:@Model.ColorString; border-radius:50%;width:50px;height:50px;">
+                        <p style="text-align:center;font-weight:600;font-size:x-large;color:white;padding-top:0.5em;">@Model.Examination.AvatarText</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        <br />
+                        @Html.Label("Examination Name: ")  @Model.Examination.ExamTemplateName
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("From: ")  @Model.StartDate
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("To: ")  @Model.EndDate
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Created By: ")  @Model.CreateUser
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Create Date: ")  @Model.DateCreated
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Passing(%): ")  @Model.JobPostingDetail.PassingScore
+                    </div>
+
+                </div>
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Examination Build")
+                    </div>
+                </div>
+                <hr />
+                @foreach (var item in Model.Examination.TemplateBuild)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1">
+                            @Html.Label(item.CategoryDetail.CategoryName) : @item.Items
+                        </div>
+                    </div>
+
+                }
+
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        @Html.Label("Scheduled Members")
+                    </div>
+                </div>
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Fullname
+                            </th>
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Pending
+                            </th>
+                            <th>
+                                Total Score
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var examiners in Model.Results)
+                        {
+                            <tr>
+                                <td>
+                                    @examiners.User.Fullname
+                                </td>
+                                <td>
+                                    @examiners.Status
+                                </td>
+
+
+                                <td>
+                                    @examiners.ItemsNotCheck
+                                </td>
+                                <td>
+                                    @if (examiners.Remarks == "Passed")
+                                    {
+                                        <div style="color:green">
+                                            @examiners.TotalScore %
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="color:red">
+                                            @examiners.TotalScore %
+                                        </div>
+
+                                    }
+                                </td>
+
+                                <td>
+                                    @if ("Finish".Equals(examiners.Status))
+                                    {
+                                        @Html.ActionLink("View", "ViewUserExamination", "MainExamination", new { schedId = Model.Id, userId = examiners.UserId }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Update", "UpdateExamination", "MainExamination", new { schedId = Model.Id, userId = examiners.UserId }, new { @class = "btn btn-primary" })
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

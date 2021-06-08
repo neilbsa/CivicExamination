@@ -1,0 +1,35 @@
+﻿@model CivicExamination.Models.UserRoleSelection
+
+@using (Html.BeginCollectionItem("SelectedRoles"))
+{
+    if (Model.IsSelected == "true")
+    {
+        <tr class="is-selected">
+
+            <td class="tdSelection mdl-data-table__cell--non-numeric">
+                @Model.Name
+                @Html.HiddenFor(p => p.Name)
+                @Html.HiddenFor(p => p.Id)
+                @Html.HiddenFor(p => p.IsSelected, new { @class = "chkUserSelection" })
+            </td>
+
+        </tr>
+    }
+    else
+    {
+        <tr>
+            @using (Html.BeginCollectionItem("SelectedRoles"))
+            {
+                <td class="tdSelection mdl-data-table__cell--non-numeric">
+                    @Model.Name
+                    @Html.HiddenFor(p => p.Name)
+                    @Html.HiddenFor(p => p.Id)
+                    @Html.HiddenFor(p => p.IsSelected, new { @class = "chkUserSelection" })
+                </td>
+
+            }
+        </tr>
+
+    }
+
+}

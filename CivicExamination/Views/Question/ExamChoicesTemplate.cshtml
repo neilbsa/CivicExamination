@@ -1,0 +1,105 @@
+﻿@model  ExaminationEntity.ExaminationModels.QuestionChoices
+@{
+    Layout = null;
+}
+
+
+    <tr>
+                @using (Html.BeginCollectionItem("Choices"))
+                {
+                    if (!object.ReferenceEquals(Model, null))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                    }
+                        <td>
+                          @if (!object.ReferenceEquals(Model, null))
+                          {
+                              if (Model.IsCorrectAnswer)
+                              {
+                                <label class="isCorrectChoices mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                    <input type="radio" id="option-1" class="isCorrectChoiceInput mdl-radio__button" name="options" value="1" checked>
+                                </label>
+                              }
+                              else
+                              {
+                                <label class="isCorrectChoices mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                    <input type="radio" id="option-1" class="isCorrectChoiceInput mdl-radio__button" name="options" value="1">
+                                </label>
+                              }
+
+
+
+
+
+
+                          }
+                          else
+                          {
+                            <label class="isCorrectChoices mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                <input type="radio" id="option-1" class="isCorrectChoiceInput mdl-radio__button" name="options" value="1">
+                            </label>
+                          }
+
+                             
+                                @Html.CheckBoxFor(m => m.IsCorrectAnswer, new { @class = "hiddenCheck" })
+
+                            
+                        </td>
+                        <td>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(m=>m.ChoiceString, null, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Description", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(m => m.ChoiceString, null, new { @class = "formErrorCode " })
+                            </div>
+                        </td>
+                        <td>
+                            <label class="btn btn-default btn-file">
+                                Browse Question Image @Html.TextBoxFor(m => m.choiceImageModel, new { @class = "choiceImageUpload", type = "file", style = "display: none;" })
+                          
+                            </label>
+                          
+                            <div class="choiceImageContainer">
+                                @if (!object.ReferenceEquals(Model, null))
+                                {
+
+                                    if (!object.ReferenceEquals(Model.choiceImage, null) && Model.choiceImage.contentLenght > 0)
+                                    {
+                                        @Html.HiddenFor(x => x.imageId);
+                                        <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+                                    }
+                                }
+                            </div>
+                            <button type="button" id="reset" class="resetChoiceImage btn btn-danger">Reset Image</button>
+                        </td>
+                        <td>
+                            <button type="button" class="removeChoiceBtn btn btn-danger">Remove</button>
+                        </td>
+                }
+    </tr>
+
+@*@using (Html.BeginCollectionItem("QuestionsChoices"))
+    {
+        <tr>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        &nbsp;
+                        <button type="button" class="close removeChoiceBtn"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            @Html.TextBoxFor(m => m.ChoiceString, null, new { @class = "mdl-textfield__input" })
+                            @Html.Label("Description", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(m => m.ChoiceString, null, new { @class = "formErrorCode " })
+                        </div>
+                        <label class="btn btn-default btn-file">
+                            Browse Question Image @Html.TextBoxFor(m => m.choiceImageModel, new { @class = "choiceImageUpload", type = "file", style = "display: none;" })
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </tr>
+
+
+    }*@
+@Scripts.Render("~/bundles/Categorydetails")

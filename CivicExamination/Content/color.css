@@ -1,0 +1,395 @@
+﻿body {
+    /* navbar */
+}
+
+
+li a:hover{
+    background-color: #555;
+    color: white;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background-color: #CD6155;
+    border-color: black;
+    color: black;
+}
+.mainLogin{
+    margin-top: 15%;
+}
+
+.mdl-snackbar {
+    left: 50%;
+}
+
+
+#header2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 4px 4px 8px black;
+}
+
+
+.CompIcon {
+    width:171px;
+    /*text-align:center;*/  
+}
+
+
+.navtext {
+    color: black;
+}
+
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.form-signin .form-control {
+     position: relative;
+     font-size: 16px;
+     height: auto;
+     padding: 10px;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      box-sizing: border-box;
+}
+
+
+.form-signin .form-control:focus {
+      z-index: 2;
+}
+
+
+.form-signin input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+}
+
+
+.form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+}
+
+
+/*.form-control {
+     border-color: #CD6155;
+     box-shadow: 4px 4px 8px #CD6155;
+}*/
+
+
+#abstract1 {
+    width: 30%;
+    height: 15%
+}
+
+
+#abstract2{
+    width: 20%;
+    height: 20%;
+}
+
+
+#abstract3 {
+    width: 20%;
+    height: 20%;
+} 
+
+
+#abstract4 {
+    width: 20%;
+    height: 20%;
+}
+
+
+.asbtractchoices{
+    object-position:center;
+}
+
+
+#personality1 {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+
+#login{
+    width:400px;
+}
+
+
+#loginbutton {
+    background-color: #2471A3;
+}
+
+
+.watermark {
+    width: 100%;
+    height: 1000px;
+    display: block;
+    position: relative;
+}
+
+
+.watermark::after {
+    content: "";
+    background: url(http://civicmdsg.com.ph/wp-content/uploads/2016/05/The-Big-League-Phil-Construct-expos-in-Manila-Visayas-and-Mindanao-2-848x450.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.13;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+#bodylogin {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 42px;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+
+#submitbutton {
+    background-color: #2471A3;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+
+#xbutton {
+    background-color: #CD6155;
+    width:43px;
+}
+
+
+.btn-default {
+    background-color: #2471A3;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 19px;
+    color: white;
+}
+
+
+#addquestionbutton {
+    width: 20%;
+    background-color: #2471A3;
+}
+
+
+#viewbutton {
+    width: 20%;
+    background-color: #CD6155;
+}
+
+
+#addtextarea{
+    width:40%;
+    height:80px;
+}
+
+
+#choicestextarea {
+    width: 83%;
+    height: 33px;
+}
+
+
+#add {
+    width: 100px;
+    height: 42px;
+    font-size: 16px;
+    background-color: #2471A3;
+    color: white;
+}
+
+
+#cancel {
+    width: 100px;
+    height:42px;
+    font-size:16px;
+    background-color: #CD6155;
+    color:white;
+}
+
+
+#search {
+    background-color: #2471A3;
+    width: 74px;
+    height:34px;
+    font-size: 12px;
+    color: white;
+}
+
+
+table, td, th {
+    border: 1px solid black;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 75%;
+}
+
+
+th {
+    height: 50px;
+}
+
+
+#view {
+    width: 50%;
+    height: 48px;
+    background-color: #2471A3;
+}
+
+
+#close {
+    background-color:#CD6155;
+}
+
+
+#category{
+    font-size:18px;
+}
+
+
+#searchbox{
+    font-size:18px;
+}
+
+
+#question {
+    width: 1119px;
+    height: 170px;
+}
+
+
+#imagebutton{
+    height:40px;
+}
+
+
+#choice{
+    width:800px;px;
+    height:50px;
+}
+
+
+#choicetable{
+    width:820px;
+}
+
+
+#template{
+    font-size:18px;
+}
+
+.list-group-item{
+    font-size:17px;
+}
+
+#dropdowntracks {
+    color: white;
+    background-color: #2471A3;
+}
+
+td{
+    font-size:16px;
+}
+
+th{
+    font-size:17px;
+}
+
+
+#thumbnail {
+    width: 442px;
+    height: 401px;
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: transparent;
+    z-index: 2;
+    position: absolute;
+}
+
+.kahitano {
+    width: 442px;
+    height: 401px;
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+    opacity: 0.4;
+    border-radius: 10px;
+}
+
+
+
+.carousel img {
+   width:806px;
+   height:406px;
+}
+
+
+#logo{
+    height:114px;
+}
+
+
+#print {
+    color: white;
+    background-color: #2471A3;
+}
+
+
+label {
+    display: inline-block;
+    width: 200px;
+    margin-right: 30px;
+    text-align: right;
+}
+
+input {
+}
+
+fieldset {
+    border: none;
+    width: 500px;
+    margin: 0px auto;
+}

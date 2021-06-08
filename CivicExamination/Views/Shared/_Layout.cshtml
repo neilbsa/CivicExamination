@@ -1,0 +1,233 @@
+﻿@using ExaminationEntity.ExaminationModels
+
+
+@{
+
+    var comp = @Session["COMPANY"] as Company;
+
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/MaterializeCss")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/BoostrapCalendarCss")
+
+    @*<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+    @Styles.Render("~/Content/BootstrapMaterialDatetimePickerCss")
+
+
+</head>
+<body>
+
+
+    <div class="modal fade" id="staticModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticModal-label">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                    <h4 class="modal-title" id="staticModal-label"></h4>
+                </div>
+                <div class="modal-body staticModalBody">
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade bs-example-modal-lg" id="SystemModal" tabindex="-1" role="dialog" aria-labelledby="CreateQuestionModal-label">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="CreateQuestionModal-label">Create Question</h4>
+                </div>
+                <div class="modal-body">
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="modalSaveBtn" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <input type="hidden" id="SystemBaseURL" value="@String.Format("{0}{1}{2}{3}", @Request.Url.Scheme, "://", @Request.Url.Authority, @Request.ApplicationPath.TrimEnd('/'), "/")" />
+
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title mainFormTitle"></span>
+
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation">
+
+
+                    @*@Html.ActionLink("Messages", "Index", "Communication", null, new { @class = "mdl-navigation__link" })*@
+                    <div>
+                        @if (!object.ReferenceEquals(comp, null))
+                        {
+                            @comp.Name;
+                        }
+                    </div>
+                </nav>
+            </div>
+
+            @*<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                    <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Dashboard</a>
+                    <a href="#scroll-tab-2" class="mdl-layout__tab">Messages</a>
+                </div>*@
+
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Welcome</span>
+
+            @*<nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Messages</a>
+                </nav>*@
+
+            <h4>Menu</h4>
+            @if (User.IsInRole("Common"))
+            {
+                @Html.ActionLink("My Courses", "ExaminerDashboard", "Home", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+
+
+
+
+            @if (User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("System User", "AdminAccountIndex", "Account", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+            @if (User.IsInRole("ExamineeAdministrator") || User.IsInRole("ExaminationAdministrator") || User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Job Postings", "Index", "JobPosting", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+            @if (User.IsInRole("ExaminationAdministrator") || User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Category List", "Index", "Category", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+                @Html.ActionLink("Examination", "Index", "Examination", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+            @if (User.IsInRole("ExamineeAdministrator") || User.IsInRole("ExaminationAdministrator") || User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Examinees", "Index", "Examiner", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+                @Html.ActionLink("Schedules", "Index", "Schedule", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+                @Html.ActionLink("Change Company", "SelectCompany", "Account", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+            @if (User.IsInRole("Common"))
+            {
+                @Html.ActionLink("My Details", "UserEmploymentDataSheet", "Examiner", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+
+            @if (User.IsInRole("EvaluationAdmin") || User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Evaluation", "Index", "Evaluation", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+            @if (User.IsInRole("EvaluatorUser") || User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("My Evaluatee", "EvaluatorIndex", "Evaluation", null, new { @class = "menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+            }
+
+
+            @using (Html.BeginForm("LogOff", "Account"))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="menuButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log out</button>
+            }
+
+        </div>
+
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="pageGrouperDom">
+                    <div class="page-content" style="margin:0px;">
+                        @RenderBody()
+                    </div>
+                    <div class="inactiveSidePanel" id="sidePanelList">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panelHead">Users</div>
+                            <div class="panel-body" style="padding:0px;">
+
+                                <div class="memberPopChatList">
+                                    <table class="table table-bordered table-hover table-condensed" id="popChatMemberTbl">
+                                        <tbody>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+        </main>
+
+    </div>
+
+
+    <div id="toastNotif" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/MaterializeScript")
+    @Scripts.Render("~/bundles/BoostrapCalendarScript")
+    @Scripts.Render("~/bundles/BootstrapMaterialDatetimePicker")
+    @Scripts.Render("~/bundles/Communication")
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    <style>
+        .mdl-snackbar {
+            left: 50%;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var menuButton = $('.mdl-layout__drawer-button');
+            menuButton.html('<i class="glyphicon glyphicon-th-list"></i>')
+
+        });
+
+
+
+    </script>
+
+
+
+
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

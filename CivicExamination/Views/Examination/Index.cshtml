@@ -1,0 +1,67 @@
+﻿@model  ICollection<ExaminationEntity.ExaminationModels.ExamTemplate>
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/MaterializeCss")
+@Styles.Render("~/Content/css")
+
+
+
+<div class="row" id="examinationIndex">
+
+    <div class="row searchUser">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon-search glyphicon"></span></button>
+                </span>
+            </div>
+            @*@Html.ActionLink("Create",null, null, new {id= "createQuestionBtn",@class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", style = "margin-top:10px;" })*@
+            <button type="button" id="createExamination" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" , style="margin-top:10px;">Create</button>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="list-group" id="examinationMainList">
+
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        @Html.Partial("IndexItemView", item);
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/MaterializeScript")
+@Scripts.Render("~/bundles/Examination")
+
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle')
+        formTitle.text('Examinations')
+
+    })
+
+
+</script>
+
+

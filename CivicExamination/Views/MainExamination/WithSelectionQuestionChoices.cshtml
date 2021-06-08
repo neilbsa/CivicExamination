@@ -1,0 +1,47 @@
+﻿@model  ExaminationEntity.ExaminationModels.UserAnswer
+@{
+    Layout = null;
+}
+
+
+@*<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="thumbnail">
+            <div class="caption">
+
+            </div>
+        </div>
+    </div>*@
+
+
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 @Model.Id" >
+        <div class="thumbnail" style="max-height:138px;max-width:558.66px;">
+            <div class="caption">
+                <div class="row">
+                    <div class="examAvatar col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
+
+                        @if (Model.isSelected)
+                        {
+                            <span class="glyphicon glyphicon-check"></span>
+                        }
+
+                    </div>
+                    <div class="examAvatar col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                        @Model.ChoiceString
+                        @Html.HiddenFor(x => x.ChoiceString)
+                        <p>
+                            @if (!object.ReferenceEquals(Model, null))
+                            {
+
+                                if (!object.ReferenceEquals(Model.choiceImage, null) && Model.choiceImage.contentLenght > 0)
+                                {
+                                    @Html.HiddenFor(x => x.imageId);
+                                    <img alt="Main Image" class="choiceImg" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+                                }
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

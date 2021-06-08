@@ -1,0 +1,61 @@
+﻿@model  ExaminationEntity.ExaminationModels.UserAnswer
+@{
+    Layout = null;
+}
+
+
+
+    @using (Html.BeginCollectionItem("UserAnswer"))
+    {
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+            <div class="thumbnail choicesPanel @(Model.isSelected ? "isSelectedThumbnail": "") " style="height:138px;">
+                <div class="caption">
+                    <div class="row">
+                        <div class="examAvatar col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            @if (Model.isSelected)
+                            {
+                                <label class="isSelected mdl-radio mdl-js-radio mdl-js-ripple-effect  is-checked" data-quesid=@Model.ScheduleQuestionId for="@Model.Id">
+                                    <input type="radio" id="@Model.Id" class="isCorrectChoiceInput mdl-radio__button" name="options" value="1" checked>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="isSelected mdl-radio mdl-js-radio mdl-js-ripple-effect" data-quesid=@Model.ScheduleQuestionId for="@Model.Id">
+                                    <input type="radio" id="@Model.Id" class="isCorrectChoiceInput mdl-radio__button" name="options" value="1">
+                                </label>
+                            }
+                        </div>
+                        <div class="examAvatar col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  
+                         
+                                @if (!object.ReferenceEquals(Model, null))
+                                {
+
+                                    if (!object.ReferenceEquals(Model.choiceImage, null) && Model.choiceImage.contentLenght > 0)
+                                    {   @Model.ChoiceString
+                                        @Html.HiddenFor(x => x.ChoiceString)
+                                        <div style="max-width:50%;max-height:50%;">
+                                            @Html.HiddenFor(x => x.imageId)
+                                            <img alt="Main Image" style="width:100px;height:100px;" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <h3> @Model.ChoiceString</h3>
+                                        @Html.HiddenFor(x => x.ChoiceString)
+                                    }
+                                }
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    }
+
+

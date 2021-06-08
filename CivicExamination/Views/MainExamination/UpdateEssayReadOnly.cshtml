@@ -1,0 +1,161 @@
+﻿@model CivicExamination.Models.questionCorrectionViewModel
+
+@{
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+        @if (Model.essayStatus == "Correct")
+        {
+            <div class="panel panel-success">
+                <div class="panel-heading">
+
+                    <button id="@Model.Id" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                        for="@Model.Id">
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Correct">Set to Correct</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Wrong">Set to Wrong</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="NotChecked">Set to Not Checked</li>
+                    </ul>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div>
+                                    @Model.Question.Question
+                                </div>
+                                <div Id="mainImageContainer">
+                                    @if (Model.Question.MainQuestionImage != null)
+                                    {
+                                        <img alt="Main Image" class="questionImg" src="@String.Format("data:{0};base64,{1}",Model.Question.MainQuestionImage.contentType,Model.Question.MainQuestionImage.content64base)" />
+                                    }
+                                </div>
+                                <hr />
+                                @Html.Label("Answer")
+                                @foreach (var i in Model.UserAnswer)
+                                {
+                                    Html.RenderPartial("UpdateEssayUserAnswerReadOnly", i);
+                                }
+                                <hr />
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.essayStatus == "Wrong")
+        {
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+
+                    <button id="@Model.Id" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                        for="@Model.Id">
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Correct">Set to Correct</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Wrong">Set to Wrong</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="NotChecked">Set to Not Checked</li>
+                    </ul>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div>
+                                    @Model.Question.Question
+                                </div>
+                                <div Id="mainImageContainer">
+                                    @if (Model.Question.MainQuestionImage != null)
+                                    {
+                                        <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.Question.MainQuestionImage.contentType,Model.Question.MainQuestionImage.content64base)" />
+                                    }
+                                </div>
+                                <hr />
+                                @Html.Label("Answer")
+                                @foreach (var i in Model.UserAnswer)
+                                {
+                                    Html.RenderPartial("UpdateEssayUserAnswerReadOnly", i);
+                                }
+                                <hr />
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.essayStatus == "NotChecked")
+        {
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <button id="@Model.Id" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                        for="@Model.Id">
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Correct">Set to Correct</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="Wrong">Set to Wrong</li>
+                        <li class="updateEssay mdl-menu__item" data-questionid=@Model.Id data-Actiontype="NotChecked">Set to Not Checked</li>
+                    </ul>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div>
+                                    @Model.Question.Question
+                                </div>
+                                <div Id="mainImageContainer">
+                                    @if (Model.Question.MainQuestionImage != null)
+                                    {
+                                        <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.Question.MainQuestionImage.contentType,Model.Question.MainQuestionImage.content64base)" />
+                                    }
+                                </div>
+                                <hr />
+                                @Html.Label("Answer")
+                                @foreach (var i in Model.UserAnswer)
+                                {
+                                    Html.RenderPartial("UpdateEssayUserAnswerReadOnly", i);
+                                }
+                                <hr />
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+</div>
+

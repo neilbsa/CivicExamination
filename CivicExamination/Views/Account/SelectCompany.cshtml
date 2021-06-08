@@ -1,0 +1,37 @@
+﻿@model ICollection<ExaminationEntity.ExaminationModels.Company>
+
+
+
+
+@foreach (var item in Model.Where(x=>x.IsDeleted != true))
+{
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="http://placehold.it/64x64">
+            <div class="caption">
+                <h3>
+                 @item.Name
+                </h3>
+                @Html.ActionLink("Select", "SetCompany",new { id =item.Id,returnUrl=ViewBag.returnUrl  }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+                @*new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"*@
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/AccountModule")
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Select Company');
+    })
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,35 @@
+﻿@model ExaminationEntity.ExaminationModels.CategoryQuestion
+
+@{
+    Layout = null;
+ }
+
+
+
+
+
+@using (Html.BeginForm("Update", "Question", FormMethod.Post, new { @Id = "updateQuestionFrm" }))
+{
+    <div id="errorList">
+
+
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=> m.QuestionType, new { Id ="selectType" })
+    if (!object.ReferenceEquals(Model, null))
+    {
+        @Html.HiddenFor(x => x.Id);
+    }
+    if (Model.QuestionType == "Multiple_Choice")
+    {
+        Html.RenderPartial("Multiple_Choice", Model);
+    }
+    else if (Model.QuestionType == "Matching")
+    {
+        Html.RenderPartial("Matching", Model);
+    }
+    else if (Model.QuestionType == "Essay")
+    {
+        Html.RenderPartial("Essay", Model);
+    }
+}

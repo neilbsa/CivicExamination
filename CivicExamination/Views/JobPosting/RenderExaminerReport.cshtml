@@ -1,0 +1,73 @@
+﻿@model CivicExamination.Models.JobPostingSearchViewModel
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Extract for : @ViewBag.PostingName</div>
+                    <div class="panel-body">
+                        @Html.HiddenFor(x=>x.JobPostingId)
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">
+
+                                    @Html.TextBoxFor(p => p.DateFrom, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                    @Html.Label("Date from:", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.DateFrom, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">
+
+                                    @Html.TextBoxFor(p => p.DateTo, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                                    @Html.Label("Date To:", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.DateTo, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <button type="submit" class="btn btn-success">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/BootstrapMaterialDatetimePicker")
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.datePickerMdl').bootstrapMaterialDatePicker
+            ({
+                time: false,
+                clearButton: true
+
+            }).on('change', function (date) {
+
+                var dom = $(this)
+                var parent = dom.parent();
+
+                if (dom.val() === "") {
+                    parent.removeClass('is-dirty')
+                } else {
+                    parent.addClass('is-dirty')
+
+                }
+
+
+            });
+
+
+    })
+</script>

@@ -1,0 +1,17 @@
+﻿@model ExaminationEntity.ExaminationModels.KRAModels
+
+
+<tr>
+    @using (Html.BeginCollectionItem("KRAs"))
+    {
+
+        @Html.HiddenFor(x=>x.Id)
+        <td>@Html.TextBoxFor(x => x.Description, new { @readonly="readonly", @class = "form-control" })</td>
+        <td>@Html.TextBoxFor(x => x.RawScore, new { @readonly = "readonly", @class = "form-control kraInputs kraRawScoreInput" })</td>
+        <td>@Html.TextBoxFor(x => x.Weight, new { @readonly = "readonly", @class = "form-control kraInputs kraWeightInput" })</td>
+        <td>@Html.TextBoxFor(x => x.IndexScore, new {  @readonly = "readonly", @class = "form-control kraIndexScore" })</td>
+        <td><button type="button" class="removeKraBtn btn btn-danger">remove</button></td>
+
+
+    }
+</tr>

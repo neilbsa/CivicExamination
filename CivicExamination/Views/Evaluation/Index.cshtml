@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ExaminationEntity.ExaminationModels.AppraisalBatch>
+
+
+<div class="row">
+
+    <div class="row searchUser">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon-search glyphicon"></span></button>
+                </span>
+            </div>
+            @*@Html.ActionLink("Create",null, null, new {id= "createQuestionBtn",@class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", style = "margin-top:10px;" })*@
+           @Html.ActionLink("Create","Create",null,new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", style = "margin-top:10px;" })
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="list-group" >
+
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="list-group-item">
+                            <div class="list-group-item-text">
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                        @String.Format("{0} for Date {1}", item.Description,item.AppraisalDate)
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12">
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

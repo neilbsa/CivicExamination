@@ -1,0 +1,32 @@
+﻿
+<div class="row">
+    <div class="col-xs-12 col-sm-12  col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div id="calendar">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    .calendar-context-menu{
+        z-index: 20000;
+    }
+
+</style>
+
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/MaterializeScript")
+@Scripts.Render("~/bundles/Examination")
+
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle')
+        formTitle.text('Schedule Examination')
+
+    })
+</script>

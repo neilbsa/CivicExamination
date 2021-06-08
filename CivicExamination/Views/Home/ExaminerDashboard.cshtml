@@ -1,0 +1,79 @@
+﻿@model ExaminationEntity.ExaminationModels.UserProfile
+
+
+
+
+
+
+
+<div style="height:150px;background-color:slategrey;">
+ <br />
+    <br />
+    <br /><br />
+<br />
+<br />
+
+
+</div>
+
+
+
+
+<div class="row" style="margin:10px">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+        <h2 style="top:-40px;z-index:100;position:absolute;margin-top:-10px;color:whitesmoke;">Courses</h2>
+        <div class="row">
+            @foreach (var item in Model.ScheduledExaminations.Where(x=>x.Status != "Finish"))
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="examAvatar col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <br />
+                                    <div style="background-color:@item.Schedule.ColorString; border-radius:50%;width:50px;height:50px;">
+                                        <p style="text-align:center;font-weight:600;font-size:x-large;color:white;padding-top:0.5em;">@item.Schedule.Examination.AvatarText</p>
+                                    </div>
+                                </div>
+                                <div class="examAvatar col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                    <h3>@item.Schedule.Examination.ExamTemplateName</h3>
+                                    <p>@item.Schedule.Examination.TemplateDescription</p>
+                                    <p>@item.Schedule.StartDate.ToShortDateString() - @item.Schedule.ExpirationDate.ToShortDateString()</p>
+                                </div>
+                            </div>
+                            <p style="padding-left:80%">
+                                    @using (Html.BeginForm("PrepareExamination", "MainExamination", FormMethod.Post, new { @class = "prepareQuestionFrm" }))
+                                    {
+                                        <input type="hidden" name="SchedId" id="SchedId" value="@item.Id" />
+                                        @Html.AntiForgeryToken()
+                                        <button type="button" class="submitStartPrepare">Start</button>
+                                    }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+</div>
+
+
+@Scripts.Render("~/bundles/modernizr")
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/MaterializeScript")
+@Scripts.Render("~/bundles/MainExam")
+
+
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Welcome');
+    })
+
+
+</script>

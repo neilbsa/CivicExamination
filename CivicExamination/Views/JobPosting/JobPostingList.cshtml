@@ -1,0 +1,24 @@
+﻿@model  ICollection<ExaminationEntity.ExaminationModels.JobPostingModel>
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="row">
+        <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="list-group" id="jobPostingMainList">
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        @Html.Partial("IndexViewItem", item);
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

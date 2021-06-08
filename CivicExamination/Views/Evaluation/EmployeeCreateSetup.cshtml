@@ -1,0 +1,52 @@
+﻿@model ExaminationEntity.ExaminationModels.Ta3Employee
+
+@using (Html.BeginCollectionItem("Employees"))
+{
+
+    <div class="list-group-Model">
+        <div class="list-group-Model-text">
+
+
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="@("Switch")@Model.Ta3Id">
+                        @Html.CheckBoxFor(x => x.IsIncluded, new { id = "Switch" + @Model.Ta3Id, @class = "mdl-switch__input" })
+                        <span class="mdl-switch__label"></span>
+                    </label>
+
+                </div>
+
+                @Html.HiddenFor(x => Model.EmployeeNo)
+                @Html.HiddenFor(x => Model.Ta3Id)
+                @Html.HiddenFor(x => Model.Firstname)
+                @Html.HiddenFor(x => Model.MiddleName)
+                @Html.HiddenFor(x => Model.LastName)
+                @Html.HiddenFor(x => Model.EmployeePositionLevel)
+                @Html.HiddenFor(x => Model.Dept)
+                @Html.HiddenFor(x => Model.DateHired)
+                @Html.HiddenFor(x => Model.AcceptanceCode)
+                @Html.HiddenFor(x => Model.Status)
+                @Html.HiddenFor(x => Model.EmailAddress)
+                @Html.HiddenFor(x => Model.CompanyName)
+                <div class="col-xs-6 col-sm-7 col-md-7 col-lg-7">
+                    @String.Format("{3} - {0} {1} {2}", Model.Firstname, Model.MiddleName, Model.LastName, Model.EmployeeNo)
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+                    @Html.DropDownListFor(x => Model.AppraisalId, ViewBag.AppraisalType as IEnumerable<SelectListItem>, "Type", new { @class = "form-control" })
+
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12">
+                    <b>Position: &nbsp;</b>   @Model.EmployeePositionLevel
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}

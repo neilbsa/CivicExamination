@@ -1,0 +1,95 @@
+﻿
+@model ExaminationEntity.ExaminationModels.ScheduleTemplate
+
+@{
+    Layout = null;
+ 
+}
+
+@using (Html.BeginForm("DeleteConfirmed", "Schedule", FormMethod.Post, null))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Id)
+
+    <div id="errorList">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3>Are you sure you want to delete Schedule ?</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Schedule Detail</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>Date From</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @*@Html.TextBoxFor(x => x.StartDate, new { id = "startDate", @class = "form-control", type = "Date", @readonly = "readonly" })*@
+                        <input type="text" value="@Model.StartDate.ToShortDateString()" class="form-control"  readonly="readonly" />
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>Date To</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @*@Html.TextBoxFor(x => x.EndDate, new { id = "endDate", @class = "form-control", type = "Date", @readonly = "readonly" })*@
+                        <input type="text" value="@Model.ExpirationDate.ToShortDateString()" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>
+                            Examination Name
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @Html.HiddenFor(x => x.ExaminationId, new { id = "examId", @class = "form-control" })
+                        @Html.TextBoxFor(x=>x.Examination.ExamTemplateName, new { id = "examName", @class = "form-control" ,@readonly = "readonly" })
+                        <span class="examTemplateErrorCode formErrorCode"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>
+                            Color Alias
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @Html.TextBoxFor(x => x.ColorString, new { @type = "color", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Member Detail</div>
+            <div class="panel-body">
+                <table id="memberTable" class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!object.ReferenceEquals(Model, null))
+                        {
+                            foreach (var iten in Model.ScheduledExaminers.Where(x => x.IsDeleted != true))
+                            {
+                                Html.RenderPartial("ScheduledMemberReadOnly", iten);
+                            }
+                        }
+                    </tbody>
+                </table>
+         
+            </div>
+        </div>
+    </div>
+
+
+
+}

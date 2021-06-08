@@ -1,0 +1,34 @@
+﻿@model ExaminationEntity.ExaminationModels.CategoryQuestion
+
+@{
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
+                                @Html.TextAreaFor(p => p.Question, 5, 5, new { style = "width:100%;height:100px;", maxlength = 1000, @class = "mdl-textfield__input" , @readonly = "readonly" })
+                                @Html.Label("Question", new { @class = "mdl-textfield__label" })
+                            </div>                     
+                            <div Id="mainImageContainer">
+                                @if (Model.MainQuestionImage != null)
+                                {
+                                    <img alt="Main Image" class="questionImg"  src="@String.Format("data:{0};base64,{1}",Model.MainQuestionImage.contentType,Model.MainQuestionImage.content64base)" />
+                                }
+                            </div>
+                            <hr />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

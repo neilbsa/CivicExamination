@@ -1,0 +1,44 @@
+﻿@model ExaminationEntity.ExaminationModels.CategoryQuestion
+
+@{
+    Layout = null;
+}
+
+
+@*@Styles.Render("~/Content/MaterializeCss")
+    @Styles.Render("~/Content/css")*@
+@using (Html.BeginForm("CreateQuestion", "Question", FormMethod.Post, new { enctype = "multipart/form-data", id = "createQuestionFrm" }))
+{
+    <div id="errorList">
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.CategoryId,new {Id ="catId" })
+
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class=" mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                @Html.TextBoxFor(p => p.QuestionType, new { @class = "mdl-textfield__input", id = "selectType", @readonly = "" })
+                <label for="selectType" class="mdl-textfield__label">Question Types</label>
+                @Html.ValidationMessageFor(p => p.QuestionType, null, new { @class = "formErrorCode " })
+
+
+                <ul for="selectType" class="typeSelect mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item selectMenu">Multiple_Choice</li>
+                    <li class="mdl-menu__item selectMenu">Matching</li>
+                    <li class="mdl-menu__item selectMenu">Essay</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="questionBody">
+
+        </div>
+    </div>
+}
+
+
+
+@*@Scripts.Render("~/bundles/jquery")*@
+@*@Scripts.Render("~/bundles/Questiondetails")*@

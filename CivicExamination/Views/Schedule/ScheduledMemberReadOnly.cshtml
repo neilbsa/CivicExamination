@@ -1,0 +1,31 @@
+﻿@model ExaminationEntity.ExaminationModels.ScheduleExaminerModel
+
+@{ 
+    Layout = null;
+}
+
+<tr>
+    @using (Html.BeginCollectionItem("ScheduledExaminers"))
+    {
+        <td>
+        
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                
+
+                @if (!object.ReferenceEquals(Model, null))
+                {
+                    @Html.HiddenFor(x => x.Id)
+    
+                }
+                @Html.Label("Fullname", new { @class = "mdl-textfield__label" })
+                @Html.HiddenFor(m => m.UserId, new { @class = "userId" })
+                @Html.TextBox("userFullName",!object.ReferenceEquals(Model, null) ? !object.ReferenceEquals(Model.User,null) ? Model.User.Fullname : null : null, new { @class = "userNames mdl-textfield__input", @readonly = "readonly" })
+                <span class="userMemberErrorCode formErrorCode"> </span>
+         
+            </div>
+        </td>
+        <td>
+            <button type="button" class="removeMember btn btn-danger">Remove</button>
+        </td>
+    }
+</tr>

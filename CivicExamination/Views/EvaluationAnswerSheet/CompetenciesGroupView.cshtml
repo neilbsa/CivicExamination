@@ -1,0 +1,73 @@
+﻿@model ExaminationEntity.ExaminationModels.CompetenciesGroupingAnswer
+
+
+
+@using (Html.BeginCollectionItem("CompetencygroupAnswer"))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div id="@String.Format("TAB{0}",Model.Id)" class="tab-pane fade">
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Rating Scale
+                        </th>
+                        <th>
+                            Score
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var scale in Model.RatingScales)
+                    {
+                        <tr>
+                            <td>@scale.Description</td>
+                            <td>@scale.ScoreDetails</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <ul class="list-group">
+
+
+
+
+                @Html.HiddenFor(x => x.Id, new { @class = "compModelGroupId" })
+
+                @for (int i = 0; i < Model.CompetenciesMemberAnswers.Count(); i++)
+                {
+                    @Html.HiddenFor(x => Model.CompetenciesMemberAnswers[i].Id)
+                    @Html.HiddenFor(x => x.Id)
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <b> @Model.CompetenciesMemberAnswers[i].Title</b>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                @Model.CompetenciesMemberAnswers[i].Description
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                @Html.TextBoxFor(x => @Model.CompetenciesMemberAnswers[i].Rating, new { @class = String.Format("form-control compRatingScore compGrpItem{0} ratingId{0}", Model.Id), placeholder = "Rating" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            @Html.TextAreaFor(x => @Model.CompetenciesMemberAnswers[i].Remarks, new { @class = "form-control", placeholder = "Remarks" })
+                        </div>
+                    </li>
+                }
+
+
+
+
+            </ul>
+        </div>
+        <div class="row">
+            @Html.TextAreaFor(x => Model.Comment, new { placeholder = "Comment", @class = "form-control" })
+        </div>
+    </div>
+}

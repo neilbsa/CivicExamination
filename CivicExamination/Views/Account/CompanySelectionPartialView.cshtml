@@ -1,0 +1,36 @@
+﻿@model CivicExamination.Models.CompanySelectionViewModel
+
+
+
+
+@using (Html.BeginCollectionItem("SelectedCompany"))
+{
+
+    if (Model.IsSelected == "true")
+    {     <tr class="is-selected">
+            <td class="tdSelection mdl-data-table__cell--non-numeric">
+                @Model.CompanyName
+                @Html.HiddenFor(p => p.CompanyId)
+                @Html.HiddenFor(p => p.CompanyName)
+                @Html.HiddenFor(p => p.IsSelected, new { @class = "chkCompanySelection", @readonly = "readonly" })
+            </td>
+        </tr>
+    }
+    else
+    {
+
+        <tr>
+            <td class="tdSelection mdl-data-table__cell--non-numeric">
+                @Model.CompanyName
+                @Html.HiddenFor(p => p.CompanyId)
+                @Html.HiddenFor(p => p.CompanyName)
+                @Html.HiddenFor(p => p.IsSelected, new { @class = "chkCompanySelection", @readonly = "readonly" })
+            </td>
+        </tr>
+    }
+
+
+
+}
+
+

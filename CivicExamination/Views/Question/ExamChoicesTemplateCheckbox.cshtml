@@ -1,0 +1,70 @@
+﻿@model  ExaminationEntity.ExaminationModels.QuestionChoices
+@{
+    Layout = null;
+}
+
+
+<tr>
+    @using (Html.BeginCollectionItem("Choices"))
+    {
+        if (!object.ReferenceEquals(Model, null))
+        {
+            @Html.HiddenFor(x => x.Id)
+        }
+        <td>
+          
+         @if (!object.ReferenceEquals(Model, null))
+         {
+            if (Model.IsCorrectAnswer)
+            {
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect is-checked" for="1">
+                    <input type="checkbox" id="1" class="isCorrectChoices mdl-checkbox__input" checked>
+                </label>
+            }
+            else
+            {
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect is-checked" for="1">
+                    <input type="checkbox" id="1" class="isCorrectChoices mdl-checkbox__input">
+                </label>
+             }
+         }
+         else
+         {
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect is-checked" for="1">
+                <input type="checkbox" id="1" class="isCorrectChoices mdl-checkbox__input">
+            </label>
+         }
+
+            @Html.CheckBoxFor(m => m.IsCorrectAnswer, new { @class = "hiddenCheck" })
+        </td>
+        <td>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.TextBoxFor(m => m.ChoiceString, null, new { @class = "mdl-textfield__input" })
+                @Html.Label("Description", new { @class = "mdl-textfield__label" })
+                @Html.ValidationMessageFor(m => m.ChoiceString, null, new { @class = "formErrorCode " })
+            </div>
+        </td>
+        <td>
+              <label class="btn btn-default btn-file">
+                  Browse Question Image @Html.TextBoxFor(m => m.choiceImageModel, new { @class = "choiceImageUpload", type = "file", style = "display: none;" })
+              </label>
+              <div class="choiceImageContainer">
+                  @if (!object.ReferenceEquals(Model, null))
+                  {
+      
+                      if (!object.ReferenceEquals(Model.choiceImage, null) && Model.choiceImage.contentLenght > 0)
+                      {
+                        @Html.HiddenFor(x => x.imageId);
+                        <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+                      }
+                  }
+              </div>
+            <button type="button" id="reset" class="resetChoiceImage btn btn-danger">Reset Image</button>
+        </td>
+        <td>
+              <button type="button" class="removeChoiceBtn btn btn-danger">Remove</button>
+        </td>
+    }
+</tr>
+
+@Scripts.Render("~/bundles/Categorydetails")

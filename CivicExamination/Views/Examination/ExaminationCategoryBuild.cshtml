@@ -1,0 +1,29 @@
+﻿@model ExaminationEntity.ExaminationModels.ExamCategoryTemplate
+
+@{
+    Layout = null;
+ }
+<tr>
+    @using (Html.BeginCollectionItem("TemplateBuild"))
+    {
+        @Html.HiddenFor(m=>m.CategoryId, new { @class="categoryId" })
+   
+        <td>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.TextBoxFor(p => p.CategoryDetail.CategoryName, new { @class = "categoryTags mdl-textfield__input" })
+                @Html.Label("Category Name", new { @class = "mdl-textfield__label" })
+                @Html.ValidationMessageFor(p => p.CategoryDetail.CategoryName, null, new { @class = "formErrorCode " })
+            </div>
+        </td>
+        <td>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.TextBoxFor(p => p.Items, new { @class = "mdl-textfield__input" })
+                @Html.Label("Items", new { @class = "mdl-textfield__label" })
+                @Html.ValidationMessageFor(p => p.Items, null, new { @class = "formErrorCode " })
+            </div> / <span class="serverItems"></span>
+        </td>
+        <td>
+            <button type="button" class="removeCategory btn btn-danger">Remove</button>
+        </td>
+    }
+</tr>

@@ -1,0 +1,23 @@
+﻿@model ExaminationEntity.ExaminationModels.Category
+    @{
+        Layout = null;
+    }
+<div class="list-group-item">
+    <div class="list-group-item-text">
+        <div class="row">
+            <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
+                @Model.CategoryName
+            </div>
+            <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
+                <button id="@Model.Id" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="glyphicon glyphicon-option-vertical"></i>
+                </button>
+
+                <ul class="listUserMenu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" data-mdl-for="@Model.Id">
+                    <li>@Html.ActionLink("Update", "Update", new { Id = @Model.Id }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect " })</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

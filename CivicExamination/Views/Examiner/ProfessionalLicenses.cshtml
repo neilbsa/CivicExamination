@@ -1,0 +1,78 @@
+﻿@model ExaminationEntity.ExaminationModels.LicenseExamination
+
+@{
+    Layout = null;
+}
+
+
+<div class="thumbnail">
+    @using (Html.BeginCollectionItem("LicenseExaminations"))
+    {
+        if (!object.ReferenceEquals(Model, null))
+        {
+            @Html.HiddenFor(x => x.Id);
+        }
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.LicenseName, new { @class = "mdl-textfield__input" })
+                    @Html.Label("License Name", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.LicenseName, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                    @Html.TextBoxFor(p => p.LicenseNumber, new { @class = "mdl-textfield__input" })
+                    @Html.Label("License Number", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.LicenseNumber, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                    @Html.TextBoxFor(p => p.Expiration, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                    @Html.Label("Expiration Date", new { @class = "mdl-textfield__label" })
+                    @Html.ValidationMessageFor(p => p.Expiration, null, new { @class = "formErrorCode " })
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <br />
+                <button class="deleteProfessionalLicense btn btn-danger" type="button">Remove</button>
+            </div>
+
+        </div>
+
+    }
+</div>
+<script>
+
+    (function () {
+
+        $('.datePickerMdl').bootstrapMaterialDatePicker
+            ({
+                time: false,
+                clearButton: true
+
+            }).on('change', function (date) {
+
+                var dom = $(this)
+                var parent = dom.parent();
+
+                if (dom.val() === "") {
+                    parent.removeClass('is-dirty')
+                } else {
+                    parent.addClass('is-dirty')
+
+                }
+
+
+            });
+
+
+    })()
+
+
+
+</script>

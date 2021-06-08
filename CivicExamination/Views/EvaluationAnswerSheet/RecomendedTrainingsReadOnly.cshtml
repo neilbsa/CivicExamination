@@ -1,0 +1,14 @@
+﻿@model ExaminationEntity.ExaminationModels.RecomendedTraining
+
+
+<tr>
+    @using (Html.BeginCollectionItem("RecommendedTrainings"))
+    {
+        @Html.HiddenFor(x=>x.Id)
+        <td>@Html.TextBoxFor(x => x.TrainingDescription, new { @readonly="readonly", @class = "form-control" })</td>
+        <td>@Html.TextBoxFor(x => x.Timetable, new { @readonly = "readonly", @class = "form-control" })</td>
+        <td>@Html.TextBoxFor(x => x.Remarks, new { @readonly = "readonly", @class = "form-control" })</td>
+
+
+    }
+</tr>

@@ -1,0 +1,31 @@
+﻿@model ExaminationEntity.ExaminationModels.JobPostingExamTemplate
+
+@{ 
+    Layout = null;
+}
+
+
+
+
+@using (Html.BeginCollectionItem("Examinations"))
+{
+
+    <div class="row">
+        @Html.HiddenFor(x => x.ExamTemplateId, new { @class = "examinationId" })
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="min-width:100%">
+                @Html.TextBox("examName",null, new { @class = "examinationTags mdl-textfield__input" })
+                @Html.Label("Examination Name", new { @class = "mdl-textfield__label" })
+                @Html.ValidationMessage("examName", new { @class = "formErrorCode " })
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="min-width:100%">
+                @Html.TextBoxFor(p => p.PassingScore, new { @class = "mdl-textfield__input" })
+                @Html.Label("Passing Score", new { @class = "mdl-textfield__label" })
+                @Html.ValidationMessageFor(p => p.PassingScore, null, new { @class = "formErrorCode " })
+            </div>
+        </div>
+    </div>
+
+}

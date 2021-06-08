@@ -1,0 +1,201 @@
+﻿@model ExaminationEntity.ExaminationModels.ScheduleExaminerModel
+
+@{
+    Layout = null;
+    int index = 1;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Examination</title>
+   
+    @Styles.Render("~/Content/MaterializeCss")
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Scripts/inc/TimeCircles.css" />
+
+</head>
+<body>
+
+
+    <div class="modal fade" id="endModal" tabindex="-1" role="dialog" aria-labelledby="endModal-label">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                    <h4 class="modal-title" id="endModal-label">Time's Up</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>We are saving you answer please wait until refresh</h2>
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <input type="hidden" id="SystemBaseURL" value="@String.Format("{0}{1}{2}{3}", @Request.Url.Scheme, "://", @Request.Url.Authority, @Request.ApplicationPath.TrimEnd('/'), "/")" />
+    @Html.HiddenFor(x => x.Id, new { id = "scheduleId" })
+    @Html.Hidden("status", ViewData["IsFirstLoad"])
+  
+    <input type="hidden" id="currentIndex" />
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title mainFormTitle"></span>
+
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation">
+                    <button class="btn btn-lg btn-primary pull-left" id="navigatePrev">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                </nav>
+                <nav class="mdl-navigation">
+                    <button class="btn btn-lg btn-primary" id="navigateStart">
+                        <span class="glyphicon glyphicon-play-circle"></span>
+                    </button>
+                </nav>
+                <nav class="mdl-navigation">
+                    <a href="@Url.Action("FinishExamination","MainExamination",new { id = Model.Id })" class="btn btn-lg btn-primary" id="navigateSave">
+                        <span class=" glyphicon glyphicon-floppy-save"></span>
+                    </a>
+
+                </nav>
+                <nav class="mdl-navigation">
+                    <button class="btn btn-lg btn-primary pull-right" id="navigateNext">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </nav>
+
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Question List</span>
+            <nav class="mdl-navigation">
+
+                <div id="examinationTimer" style="width: 245px;" data-timer="@Model.RemainSeconds">
+
+                </div>
+                @foreach (var item in Model.Schedule.Examination.TemplateBuild.Where(x => x.IsDeleted != true))
+                {
+                    <h3>@item.CategoryDetail.CategoryName</h3>
+
+                    foreach (var questions in Model.Questions.Where(x => x.Question.CategoryId == item.CategoryId).Where(x => x.IsDeleted != true))
+                    {
+
+                        <button class="btnquestion mdl-navigation__link" data-index=@index data-question="@questions.QuestionId">Question @index</button>
+                        index = index + 1;
+                    }
+                }
+
+
+            </nav>
+        </div>
+
+       
+        <main class="mdl-layout__content">
+
+
+            @*<div class="row navigationPane navbar-fixed-top" style="margin-top:65px;" >
+                <div class="col-sm-12 col-xs-12 col-md-6 col-lg-offset-3 col-lg-6 col-lg-offset-3">
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <div class="row navigationPanel">
+
+                                <div class="col-xs-12 col-sm-12 col-md-6 text-center col-md-offset-3 col-lg-6 col-lg-offset-3">
+                                    <button class="btn btn-lg btn-primary pull-left" id="navigatePrev">
+                                        <span class="glyphicon glyphicon-arrow-left"></span>
+                                    </button>
+
+                                    <button class="btn btn-lg btn-primary" id="navigateStart">
+                                        <span class="glyphicon glyphicon-play-circle"></span>
+                                    </button>
+
+                                    <a href="@Url.Action("FinishExamination","MainExamination",new { id = Model.Id })" class="btn btn-lg btn-primary" id="navigateSave">
+                                        <span class=" glyphicon glyphicon-floppy-save"></span>
+                                    </a>
+
+
+
+                                    <button class="btn btn-lg btn-primary pull-right" id="navigateNext">
+                                        <span class="glyphicon glyphicon-arrow-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="question-content" style="margin:0px;">
+
+
+                <div class="thumbnail col-sm-12 col-xs-12 col-md-6 col-lg-offset-3 col-lg-6 col-lg-offset-3">
+                    <div class="caption">
+                        <h3 class="text-center">
+                            Please press <span class="glyphicon glyphicon-play-circle"></span> to start and <br /> <br />
+                            press <span class="glyphicon glyphicon-floppy-save"></span> if you are done
+                        </h3>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </main>
+      
+    </div>
+
+
+    <div id="toastNotif" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/MaterializeScript")
+    @Scripts.Render("~/bundles/TimeCircle")
+    @Scripts.Render("~/bundles/OnExam")
+
+
+
+
+    <style>
+        .mdl-snackbar {
+            left: 50%;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var menuButton = $('.mdl-layout__drawer-button');
+            menuButton.html('<i class="glyphicon glyphicon-th-list"></i>')
+
+        });
+    </script>
+
+
+
+
+
+
+</body>
+</html>

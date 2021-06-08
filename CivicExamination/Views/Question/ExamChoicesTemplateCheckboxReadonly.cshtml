@@ -1,0 +1,33 @@
+﻿@model  ExaminationEntity.ExaminationModels.QuestionChoices
+@{
+    Layout = null;
+}
+
+
+<tr>
+    @using (Html.BeginCollectionItem("QuestionsChoices"))
+    {
+        <td>
+               @if (Model.IsCorrectAnswer)
+               {
+                   <span class="glyphicon glyphicon-ok"></span>
+               }
+        </td>
+        <td>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.TextBoxFor(m => m.ChoiceString, null, new { @class = "mdl-textfield__input" })
+                @Html.Label("Description", new { @class = "mdl-textfield__label" })
+    
+            </div>
+        </td>
+        <td>
+           
+              <div class="choiceImageContainer">
+                  <img alt="Main Image" src="@String.Format("data:{0};base64,{1}",Model.choiceImage.contentType,Model.choiceImage.content64base)" />
+              </div>
+        </td>
+     
+    }
+</tr>
+
+@Scripts.Render("~/bundles/Categorydetails")

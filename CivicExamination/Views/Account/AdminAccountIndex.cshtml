@@ -1,0 +1,114 @@
+﻿@model  ICollection<ExaminationEntity.ExaminationModels.UserProfile>
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/MaterializeCss")
+@Styles.Render("~/Content/css")
+
+
+<div class="row">
+    <div class="row searchUser">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon-search glyphicon"></span></button>
+                </span>
+            </div><!-- /input-group -->
+            @*<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-top:10px;">
+                    Create
+                </button>*@
+            @Html.ActionLink("Create", "RegisterAdmin", "Account", null, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", style = "margin-top:10px;" })
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+            <div class="list-group">
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                {
+                        <div class="list-group-item">
+                            <div class="list-group-item-text">
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
+                                        @String.Format("{0} {1} {2}", item.Firstname, item.Middlename, item.Lastname)
+                                    </div>
+                                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
+                                        <button id="@item.Id"
+                                                class="mdl-button mdl-js-button mdl-button--icon">
+                                            <i class="glyphicon glyphicon-option-vertical"></i>
+                                        </button>
+
+                                        <ul class="listUserMenu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                            data-mdl-for="@item.Id">
+                                            <li>@Html.ActionLink("Update", "UpdateAdmin","Account",null,null,null, new { Id = item.Id }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect " })</li>
+                                            <li>@Html.ActionLink("View Details", "AdminDetails","Account",null,null,null, new { Id = item.Id }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect" })</li>
+                                            <li>@Html.ActionLink("Reset Credentials", "UpdateAdminPassword", "Account", new { Id = item.Id }, new { @class = "mdl-menu__item mdl-button mdl-js-button  mdl-js-ripple-effect" })</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+
+              
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+@Scripts.Render("~/bundles/modernizr")
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/MaterializeScript")
+
+
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Admin Account');
+
+
+
+
+    })
+
+
+</script>
+
+

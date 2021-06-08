@@ -1,0 +1,90 @@
+﻿@model ExaminationEntity.ExaminationModels.Category
+
+
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Category Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @Html.HiddenFor(x => x.Id, new { id = "categoryId" })
+                                    @Html.TextBoxFor(p => p.CategoryName, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Category Name", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.CategoryName, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    @Html.TextBoxFor(p => p.CreateUser, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Created By", new { @class = "mdl-textfield__label" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 col-xs-offset-10 col-sm-2 col-sm-offset-10 col-md-2 col-md-offset-10 col-lg-2 col-lg-offset-10">
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Questions</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <button type="button" id="createCategoryQuestions" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" , style="margin-top:10px;">Create Question</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row list-group questionList" id="QuestionListTable">
+
+
+                            @if (Model.Questions != null)
+                            {
+                                foreach (var item in Model.Questions.Where(c=>c.IsDeleted != true))
+                                {
+                                    Html.RenderPartial("QuestionListView", item);
+                                }
+                            }
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+
+
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/Category")
+@Scripts.Render("~/bundles/Questiondetails")
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Update Category');
+    })
+</script>

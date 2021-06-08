@@ -1,0 +1,304 @@
+﻿@model CivicExamination.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        @if (Html.ValidationSummary(true, "", new { @class = "text-danger" }) != null)
+        {
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Errors</div>
+                    <div class="panel-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+
+
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Personal Detail</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @*<input class="mdl-textfield__input" type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Text...</label>*@
+                                @Html.TextBoxFor(p => p.User.CompanyId, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Company Id No:", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.CompanyId, null, new { @class = "formErrorCode " })
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @*<input class="mdl-textfield__input" type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Text...</label>*@
+                                @Html.TextBoxFor(p => p.User.UserDetail.Firstname, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Firstname", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.Firstname, null, new { @class = "formErrorCode " })
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(p => p.User.UserDetail.Middlename, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Middlename", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.Middlename, null, new { @class = "formErrorCode " })
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @Html.TextBoxFor(p => p.User.UserDetail.Lastname, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Lastname", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.Lastname, null, new { @class = "formErrorCode " })
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                @*<input class="mdl-textfield__input" type="text" id="sample3">
+                                    <label class="mdl-textfield__label" for="sample3">Text...</label>*@
+                                @Html.TextBoxFor(p => p.User.UserDetail.PresentAddress, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Address", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.PresentAddress, null, new { @class = "formErrorCode " })
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                                @Html.TextBoxFor(p => p.User.UserDetail.Gender, new { @class = "mdl-textfield__input", id = "selectedGender", @readonly = "" })
+                                <label for="selectedGender" class="mdl-textfield__label">Gender</label>
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.Gender, null, new { @class = "formErrorCode " })
+
+
+                                <ul for="selectedGender" class="genderSelect mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                    <li class="mdl-menu__item selectMenu">Male</li>
+                                    <li class="mdl-menu__item selectMenu">Female</li>
+
+                                </ul>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Contact Detail</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                @Html.TextBoxFor(p => p.User.UserDetail.EmailAddress, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Email Address", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.EmailAddress, null, new { @class = "formErrorCode " })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                @Html.TextBoxFor(p => p.User.UserDetail.HomeContact, new { @class = "mdl-textfield__input" })
+                                @Html.Label("Contact Number", new { @class = "mdl-textfield__label" })
+                                @Html.ValidationMessageFor(p => p.User.UserDetail.HomeContact, null, new { @class = "formErrorCode " })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading"><b>Credential Detail</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.TextBoxFor(p => p.Username, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Username", new { @class = "mdl-textfield__label" })
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.PasswordFor(p => p.Password, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Password", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.Password, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                    @Html.PasswordFor(p => p.ConfirmPassword, new { @class = "mdl-textfield__input" })
+                                    @Html.Label("Confirm Password", new { @class = "mdl-textfield__label" })
+                                    @Html.ValidationMessageFor(p => p.ConfirmPassword, null, new { @class = "formErrorCode " })
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+
+                <div class="panel panel-success">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="IsAdministrator">
+                            @Html.CheckBoxFor(p => p.User.UserDetail.IsAdministrator,new { id="isAdministratorChk", style="display:none;" })
+                            <input type="checkbox" id="IsAdministrator" class="chkIsAdministrator mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Administrator</span>
+                        </label>
+
+                    </div>
+                </div>
+            </div>*@
+
+
+        <div id="adminAccess" class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading">Access Details</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <table class="companyTable mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Assign Companies</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @if (Model.SelectedCompany != null)
+                                    {
+                                        foreach (var item in Model.SelectedCompany)
+                                        {
+
+                                            @Html.Partial("CompanySelectionPartialView", item)
+
+
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 hidden-md hidden-lg">
+
+                            &nbsp;
+
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+                            <table class="userRoleTable mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Assign Roles</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    @if (Model.SelectedRoles != null)
+                                    {
+                                        foreach (var item in Model.SelectedRoles)
+                                        {
+
+                                            @Html.Partial("RolesSelectionPartialView", item)
+
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                submit
+            </button>
+            @Html.ActionLink("Back To list", "AdminAccountIndex", "Account", null, new { type = "button", @class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" })
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/AccountModule")
+<script>
+    $(document).ready(function () {
+        var formTitle = $('.mainFormTitle');
+        formTitle.text('Register Admin');
+    })
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

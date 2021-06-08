@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CivicExamination.Models.AppraisalBatchSelect>
+
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="row">
+            <div class="myList col-xs-12 col-sm-12 col-md-12 col-lg-6 col-lg-offset-3">
+                <div class="list-group">
+
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="list-group-item">
+                                <div class="list-group-item-text">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            @Html.HiddenFor(x => item.Id)
+
+                                            @*<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="@("Switch")@item.Id">
+                                                @Html.CheckBoxFor(x => item.IsIncluded, new { id = "Switch" + item.Id, @class = "mdl-switch__input" })
+                                                <span class="mdl-switch__label"></span>
+                                            </label>*@
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            @String.Format("{0} for Date {1}", item.Description, item.AppraisalDate)
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12">
+                                            @Html.ActionLink("Extract Report", "CreateReportExcelExtract",new { AppraisalId= item.Id })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,54 @@
+﻿@model  CivicExamination.Models.ScheduleExaminerViewModel
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                <div class="thumbnail">
+                    <div class="caption">
+                        @Html.ActionLink("Back To List", "ViewResult", "Schedule", new { schedId = Model.Id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Print", "RenderReportData", "MainExamination", new { schedId = Model.Id , userId = Model.User.Id}, new { @class = "btn btn-primary" })
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Html.Label(Model.Schedule.Examination.ExamTemplateName)</div>
+                <div class="panel-body">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @Html.Label("Fullname: ") @Model.User.Fullname
+                    </div>
+                    <hr />
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @Html.Label("Questions")
+                    </div>
+                    @foreach (var item in Model.CorrectedQuestion)
+                    {
+                        if (item.Question.QuestionType == "Multiple_Choice" || item.Question.QuestionType == "Matching")
+                        {
+
+                            Html.RenderPartial("WithSelectionQuestion", item);
+                        }
+                        else if (item.Question.QuestionType == "Essay")
+                        {
+                            Html.RenderPartial("EssayReadOnly", item);
+                        }
+                    }
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+

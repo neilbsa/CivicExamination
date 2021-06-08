@@ -1,0 +1,42 @@
+﻿@model ICollection<CivicExamination.Models.ExistingAccountViewModel>
+
+
+@{ 
+    Layout = null;
+}
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Exam Name
+            </th>
+            <th>
+                Date Scheduled
+            </th>
+            <th>
+                Date Finish
+            </th>
+            <th>
+                Age (Month)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var exams in Model)
+        {
+        <tr>
+            <td>@exams.ExamName</td>
+
+            <td>@exams.DateScheduled - @exams.EndScheduled</td>
+
+            <td>@exams.DateFinish</td>
+            <td>@exams.Months</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

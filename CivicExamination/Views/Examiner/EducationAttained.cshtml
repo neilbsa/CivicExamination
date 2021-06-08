@@ -1,0 +1,119 @@
+﻿@model ExaminationEntity.ExaminationModels.EducationAttainment
+
+@{
+    Layout = null;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        &nbsp;
+        <div class="pull-right removePanel">
+            <span class="glyphicon glyphicon-remove" style="cursor:pointer;"></span>
+        </div>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginCollectionItem("EducationHistories"))
+        {
+
+            if (!object.ReferenceEquals(Model, null))
+            {
+                @Html.HiddenFor(x => x.Id);
+            }
+
+            <div class="educationHistories">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                            @Html.TextBoxFor(p => p.Type, new { @class = "schoolLevel mdl-textfield__input", @readonly = "" })
+                            <label for="civilStatus" class="mdl-textfield__label">Level</label>
+                            @Html.ValidationMessageFor(p => p.Type, null, new { @class = "formErrorCode " })
+                            <ul for="schoolLevel" class="schoolLevelSelect mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                <li class="mdl-menu__item selectMenu">Post Graduate</li>
+                                <li class="mdl-menu__item selectMenu">High School</li>
+                                <li class="mdl-menu__item selectMenu">Vocational</li>
+                                <li class="mdl-menu__item selectMenu">College</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                            @Html.TextBoxFor(p => p.DateAttendedFrom, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                            @Html.Label("Date From", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(p => p.DateAttendedFrom, null, new { @class = "formErrorCode " })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                            @Html.TextBoxFor(p => p.DateAttendedTo, "{0:yyyy-MM-dd}", new { @class = "mdl-textfield__input datePickerMdl" })
+                            @Html.Label("Date To", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(p => p.DateAttendedTo, null, new { @class = "formErrorCode " })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                            @Html.TextBoxFor(p => p.NameOfSchool, new { @class = "mdl-textfield__input" })
+                            @Html.Label("School name", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(p => p.NameOfSchool, null, new { @class = "formErrorCode " })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+                            @Html.TextBoxFor(p => p.Address, new { @class = "mdl-textfield__input" })
+                            @Html.Label("location", new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(p => p.Address, null, new { @class = "formErrorCode " })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        }
+    </div>
+</div>
+
+<script>
+
+    (function () {
+
+        $('.datePickerMdl').bootstrapMaterialDatePicker
+            ({
+                time: false,
+                clearButton: true
+
+            }).on('change', function (date) {
+
+                var dom = $(this)
+                var parent = dom.parent();
+
+                if (dom.val() === "") {
+                    parent.removeClass('is-dirty')
+                } else {
+                    parent.addClass('is-dirty')
+
+                }
+
+
+            });
+
+
+    })()
+
+
+
+</script>

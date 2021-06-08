@@ -1,0 +1,6 @@
+﻿@model ExaminationEntity.Communication.ChatDetails
+<div class="container darker messageContainer">
+    <span><b>@Model.MessageFrom </b></span>
+    <p>@Model.Message</p>
+    <span class="time-left">@Model.DateCreated.ToString("yyyy-mm-dd")</span>
+</div>

@@ -1,0 +1,178 @@
+﻿
+@model ExaminationEntity.ExaminationModels.ScheduleTemplate
+
+@{
+    Layout = null;
+ 
+}
+
+@using (Html.BeginForm("Update", "Schedule", FormMethod.Post, null))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Id)
+
+    <div id="errorList">
+    </div>
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Schedule Detail</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>Date From</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                      @Model.StartDate.ToString("yyy-MM-dd")
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>Date To</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                       @Model.ExpirationDate.ToString("yyy-MM-dd")
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>
+                            Examination:
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="input-group">
+                            @*@Html.HiddenFor(x => x.ExaminationId, new { id = "examId", @class = "form-control" })*@
+                            @*@Html.TextBoxFor(x=>x.Examination.ExamTemplateName, new { id = "examName", @class = "form-control" })*@
+                            <input type="text" readonly  id = "examName" class = "form-control" value="@Model.Examination.ExamTemplateName" />
+
+                            @*<span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="examinationLookup">
+                                    <span class="glyphicon-search glyphicon"></span>
+                                </button>
+                            </span>*@
+
+                        </div>
+                        <span class="examTemplateErrorCode formErrorCode"></span>
+                        @*<div id="examinationList" style="overflow-y:scroll;height:100px;display:none;">
+                            <table class="table table-hover table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.examinationList != null)
+                                    {
+                                        foreach (var item in ViewBag.examinationList)
+                                        {
+                                            <tr class="examinationItem" data-itemData="@item" style="cursor:pointer">
+                                                <td>
+                                                    @item
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>*@
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>
+                            Color Alias
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        @Html.TextBoxFor(x => x.ColorString, new { @type = "color" })
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label>
+                            Job Posting
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="input-group">
+                            @*@Html.HiddenFor(x => x.JobPostingId, new { id = "jobId", @class = "form-control" })*@
+                            @*@Html.TextBoxFor(x=>x.JobPostingDetail.JobName, new { id = "jobName", @class = "form-control" })*@
+                            <input type="text" readonly id="jobName" class="form-control" value="@Model.JobPostingDetail.JobName" />
+                            @*<span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="openJobList">
+                                    <span class="glyphicon-search glyphicon"></span>
+                                </button>
+                            </span>*@
+
+                        </div>
+                        <span class="examTemplateErrorCode formErrorCode"></span>
+                        @*<div id="jobpostingList" style="overflow-y:scroll;height:100px;display:none;">
+                            <table class="table table-hover table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.jobList != null)
+                                    {
+                                        foreach (var item in ViewBag.jobList)
+                                        {
+                                            <tr class="jobItem" data-itemData="@item" style="cursor:pointer">
+                                                <td>
+                                                    @item
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>*@
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Member Detail</div>
+            <div class="panel-body">
+                <table id="memberTable" class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!object.ReferenceEquals(Model, null))
+                        {
+                            foreach (var iten in Model.ScheduledExaminers.Where(x => x.IsDeleted != true))
+                            {
+                                Html.RenderPartial("ScheduledMember", iten);
+                            }
+                        }
+                    </tbody>
+                </table>
+                <button id="addScheduleMember" class="btn btn-info" type="button">Add</button>
+            </div>
+        </div>
+    </div>
+
+
+
+}
